@@ -234,3 +234,79 @@ footer { border-top: 1px solid var(--line); padding: 30px 0 46px; color: var(--m
 footer p { color: var(--muted); }
 .tag-est { font-size: 0.72rem; font-weight: 600; color: var(--series-3); border: 1px solid color-mix(in srgb, var(--series-3) 45%, transparent); border-radius: 6px; padding: 0 6px; margin-left: 4px; vertical-align: middle; white-space: nowrap; }
 .sources li { margin-bottom: 6px; word-break: break-word; }
+
+/* ---------- v2: simple client page ---------- */
+.badge-real {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 8px 14px; border-radius: 999px;
+  background: color-mix(in srgb, var(--series-shield) 12%, transparent); border: 1px solid color-mix(in srgb, var(--series-shield) 40%, transparent);
+  color: var(--text); font-size: 0.88rem;
+}
+.badge-real b { color: var(--series-shield); }
+.big3 { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.big3 .card { position: relative; padding-top: 26px; }
+.big3 .ico { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 14px;
+  background: color-mix(in srgb, var(--series-shield) 14%, transparent); color: var(--series-shield); }
+.big3 .ico svg { width: 26px; height: 26px; }
+.big3 .num { position: absolute; top: 18px; right: 20px; font-size: 2.4rem; font-weight: 800; color: var(--line); line-height: 1; }
+.big3 .fig { font-size: 1.5rem; font-weight: 750; color: var(--text); margin: 2px 0 6px; }
+
+/* price ladder */
+.ladder { display: grid; gap: 10px; }
+.rung { display: grid; grid-template-columns: 92px 14px minmax(0, 1fr); gap: 14px; align-items: center; padding: 14px 16px;
+  border-radius: 14px; border: 1px solid var(--line); background: var(--surface); }
+.rung .p { font-size: 1.45rem; font-weight: 800; color: var(--text); font-variant-numeric: tabular-nums; }
+.rung .dot { width: 14px; height: 14px; border-radius: 50%; }
+.rung .t b { color: var(--text); display: block; font-size: 1rem; }
+.rung .t span { color: var(--text-2); font-size: 0.9rem; }
+.rung.now .dot { background: var(--good); } .rung.top .dot { background: var(--warning); }
+.rung.shield .dot { background: var(--series-shield); } .rung.sell .dot { background: var(--critical); }
+.rung.shield { border-color: color-mix(in srgb, var(--series-shield) 55%, transparent); }
+
+/* simulator */
+.btnrow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.btnrow .lbl { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 4px; min-width: 70px; }
+.chip { border: 1px solid var(--line); background: var(--surface); color: var(--text-2); padding: 8px 14px; border-radius: 999px;
+  font: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; }
+.chip:hover { color: var(--text); border-color: var(--series-shield); }
+.chip[aria-pressed="true"] { background: var(--series-shield); border-color: var(--series-shield); color: #fff; }
+.chip.plain[aria-pressed="true"] { background: var(--series-plain); border-color: var(--series-plain); }
+.sim { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); margin-top: 16px; }
+@media (min-width: 980px) { .sim { grid-template-columns: minmax(0, 1fr) 300px; } }
+.sim .chart-box { height: 380px; }
+@media (max-width: 560px) { .sim .chart-box { height: 300px; } }
+.live { display: grid; gap: 10px; align-content: start; }
+.live .row { display: flex; justify-content: space-between; gap: 10px; padding: 10px 12px; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--line); font-size: 0.92rem; }
+.live .row span { color: var(--muted); }
+.live .row b { color: var(--text); font-variant-numeric: tabular-nums; }
+.live .row.key { border-color: var(--series-shield); }
+.live .event { padding: 12px 14px; border-radius: 12px; border-left: 3px solid var(--series-shield); background: var(--surface); font-size: 0.92rem; color: var(--text); min-height: 64px; }
+.live .event.bad { border-left-color: var(--critical); } .live .event.warn { border-left-color: var(--warning); }
+.replay { margin-top: 2px; }
+.mkey { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.82rem; color: var(--text-2); margin-top: 8px; }
+.mkey span { display: inline-flex; align-items: center; gap: 6px; }
+.mkey i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.mkey i.dia { border-radius: 2px; transform: rotate(45deg); width: 8px; height: 8px; }
+
+/* plans */
+.plans { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.plan { display: flex; flex-direction: column; }
+.plan .price { font-size: 2rem; font-weight: 800; color: var(--text); line-height: 1.1; margin: 8px 0 2px; }
+.plan .price small { font-size: 0.95rem; font-weight: 600; color: var(--muted); }
+.plan ul { list-style: none; padding: 0; margin: 12px 0 16px; }
+.plan li { padding: 6px 0 6px 26px; position: relative; color: var(--text-2); font-size: 0.93rem; border-top: 1px dashed var(--line); }
+.plan li::before { position: absolute; left: 2px; top: 6px; font-weight: 700; }
+.plan li.y::before { content: "\2713"; color: var(--good); }
+.plan li.n::before { content: "\2715"; color: var(--critical); }
+.plan .chip { margin-top: auto; align-self: flex-start; }
+.plan.rec { border: 2px solid var(--series-shield); }
+.answer { font-size: 1.02rem; }
+.answer .tbl-wrap { margin: 12px 0; }
+.plan > .pill { align-self: flex-start; }
+.sum4 { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.sum4 .card h3 { font-size: 1rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.sum4 .card .big { font-size: 1.6rem; font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 6px; }
+.venues { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
+.venues .card h3 { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+details.more { margin-top: 14px; }
+details.more > summary { cursor: pointer; color: var(--brand); font-weight: 600; }
+details.more[open] > summary { margin-bottom: 12px; }

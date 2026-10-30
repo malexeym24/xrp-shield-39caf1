@@ -5,23 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>XRP Shield Loan | My Neobank</title>
-<meta name="description" content="Borrow USDC against your XRP and keep every coin. XRP Shield protects the loan from flash crashes with options bought on your behalf.">
+<meta name="description" content="Borrow USDC against your XRP and keep your XRP, even in a crash. See how the protection works.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=1">
+<link rel="stylesheet" href="assets/style.css?v=3">
 </head>
 <body>
 <header class="top">
   <div class="wrap">
     <a class="logo" href="index.html" aria-label="My Neobank home"><img src="assets/logo.svg" alt="My Neobank"></a>
     <nav class="nav" aria-label="Sections">
-      <a class="hide-sm" href="#how">How it works</a>
-      <a class="hide-sm" href="#crash">Crash test</a>
+      <a class="hide-sm" href="#idea">How it works</a>
+      <a class="hide-sm" href="#watch">Watch it</a>
+      <a class="hide-sm" href="#plans">Plans</a>
       <a class="hide-sm" href="#calc">Calculator</a>
-      <a class="hide-sm" href="#faq">FAQ</a>
-      <a class="cta" href="strategy.html">Strategy<span class="hide-xs"> &amp; economics</span></a>
+      <a class="cta" href="strategy.html">For the team</a>
     </nav>
     <button class="theme-btn" type="button" aria-label="Switch theme"></button>
   </div>
@@ -30,209 +30,183 @@
 <main>
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow">My Neobank &middot; XRP Shield Loan &middot; concept</span>
-    <h1>Borrow USDC against your XRP.<br>Keep every coin.</h1>
-    <p class="lead">For long-term XRP holders who want liquidity without selling. XRP Shield buys crash protection on your
-      collateral every month, so a sudden wick does not turn into a forced sale of your XRP.</p>
+    <span class="eyebrow">My Neobank &middot; XRP Shield Loan</span>
+    <h1>Borrow dollars against your XRP.<br>Keep your XRP, even in a crash.</h1>
+    <p class="lead">You pledge XRP and get USDC. Every month we buy insurance on your XRP, so a sudden crash
+      cannot force a sale. If XRP falls hard, the insurance pays and your loan gets smaller.</p>
+    <div class="badge-real">&#10003; <span><b>Real numbers.</b> Market prices and option prices as of <span data-snap="generated_cet"></span>
+      (XRP today <span data-snap="spot.deribit_index" data-fmt="usd2"></span>).</span></div>
     <div class="btns">
-      <a class="btn primary" href="#calc">Try the calculator</a>
-      <a class="btn" href="#how">See how Shield works</a>
-    </div>
-    <div class="grid g4" style="margin-top:34px">
-      <div class="card stat"><div class="v" data-snap="tails.worst_1d" data-fmt="pct">-55.2%</div><div class="l">Deepest one-day XRP wick since Feb 2024, on 10 Oct 2025</div><div class="s">Binance XRP/USDT, close to intraday low</div></div>
-      <div class="card stat"><div class="v" data-snap="tails.p365_dd50" data-fmt="pct">38%</div><div class="l">Share of 12-month windows in which XRP fell 50% or more at some point</div><div class="s">Daily data, Feb 2024 to today</div></div>
-      <div class="card stat"><div class="v" id="hero-shield-cost">2.9%</div><div class="l">Estimated Crash Shield cost per year on a 40% LTV loan at today's option prices</div><div class="s">Model on live Deribit prices, see Strategy page</div></div>
-      <div class="card stat"><div class="v">0</div><div class="l">XRP lent out or sold to fund your protection. Collateral sits in a segregated wallet in your name</div><div class="s">Design principle</div></div>
+      <a class="btn primary" href="#watch">&#9654; Watch it work</a>
+      <a class="btn" href="#calc">Calculate my loan</a>
     </div>
   </div>
 </section>
 
-<section class="alt" id="problem">
+<section class="alt" id="idea">
   <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">The problem</div>
-      <h2>XRP at $2.00, a 40% loan, and a crash to $1.00</h2>
-      <p>You hold <strong>10,000 XRP</strong> at <strong>$2.00</strong> ($20,000) and borrow <strong>40%</strong>:
-        <strong>$8,000 USDC</strong>. Lenders liquidate when the loan reaches a fixed share of the collateral value:
-        62.5% to 83% at dedicated lenders and DeFi markets, 91% to 95% on exchange loan desks that start you at 76% to 80%.
-        With a round 80% trigger, this loan is liquidated at <strong>$1.00</strong>: a 50% drop, smaller than the 55% one-day wick XRP printed on
-        10 October 2025. Move the slider to see what happens with and without Shield.</p>
+    <div class="section-head"><div class="kicker">The idea</div><h2>Three steps, one example</h2>
+      <p>One example runs through the whole page: <strong>10,000 XRP at $2.00</strong>. The loan is always 40% of the XRP value.</p></div>
+    <div class="big3">
+      <div class="card"><span class="num">1</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+        <h3>You pledge XRP</h3><div class="fig">10,000 XRP = $20,000</div>
+        <p>Your XRP sits in a wallet in your name. We never lend it out or sell it to pay for anything.</p></div>
+      <div class="card"><span class="num">2</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9.5c-.5-1-1.6-1.5-3-1.5-1.7 0-3 .8-3 2s1.3 1.7 3 2 3 .8 3 2-1.3 2-3 2c-1.4 0-2.5-.5-3-1.5M12 6v12"/></svg></div>
+        <h3>You get USDC</h3><div class="fig">$8,000 USDC</div>
+        <p>40% of your XRP value, in USDC (a dollar stablecoin). Use it, repay it whenever you want.</p></div>
+      <div class="card"><span class="num">3</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>We insure your XRP</h3><div class="fig">If XRP crashes, we pay</div>
+        <p>Every month we buy a "put option": insurance that pays dollars if XRP falls below a set price. The payout reduces your loan. Your XRP is not sold.</p></div>
     </div>
-    <div class="grid g2">
-      <div class="card chart-card">
-        <div class="chart-head"><h3>Loan-to-value as XRP falls</h3><span class="pill brand">Example: $8,000 on 10,000 XRP</span></div>
-        <p class="chart-sub">LTV = loan / collateral value. With Shield, the protected value of your XRP never falls below the Shield level.</p>
-        <div class="legend">
-          <span><i style="background:var(--series-plain)"></i>Typical platform, no protection</span>
-          <span><i style="background:var(--series-shield)"></i>My Neobank with Crash Shield</span>
-        </div>
-        <div class="chart-box"><canvas id="ltvChart" aria-label="Loan to value against XRP price, with and without Shield" role="img"></canvas></div>
-      </div>
-      <div class="card">
-        <h3>XRP price: <span id="pv">$1.00</span></h3>
-        <input type="range" id="priceSlider" min="0.4" max="2.4" step="0.01" value="1.00" aria-label="XRP price">
-        <div class="out" style="margin-top:14px">
-          <div class="o"><div class="k">Typical platform LTV</div><div class="v" id="ltvPlain">80%</div><div class="h" id="ltvPlainH"></div></div>
-          <div class="o"><div class="k">With Crash Shield</div><div class="v" id="ltvShield">75%</div><div class="h" id="ltvShieldH"></div></div>
-        </div>
-        <div class="status" id="statusPlain"><span class="ico">&#9888;</span><span></span></div>
-        <div class="status" id="statusShield"><span class="ico">&#10003;</span><span></span></div>
-        <p class="note" style="margin-top:12px">Shield level for this loan: <strong>$1.07</strong> (the price at which the loan would reach 75% LTV).
-          Below it, the option pays the difference in USDC and the payout reduces your loan.</p>
-      </div>
+
+    <h3 style="margin:34px 0 12px">Four prices to remember</h3>
+    <div class="ladder">
+      <div class="rung now"><div class="p">$2.00</div><div class="dot"></div><div class="t"><b>Today</b><span>Loan = 40% of your XRP. All calm.</span></div></div>
+      <div class="rung top"><div class="p">$1.45</div><div class="dot"></div><div class="t"><b>We ask you to top up</b><span>Loan reaches 55%. We send an alert and ask you to add XRP or USDC. Nothing is sold.</span></div></div>
+      <div class="rung shield"><div class="p">$1.07</div><div class="dot"></div><div class="t"><b>Shield level: below this the insurance pays</b><span>Every cent XRP falls below $1.07 is paid to you in USDC and repays your loan.</span></div></div>
+      <div class="rung sell"><div class="p">$1.00</div><div class="dot"></div><div class="t"><b>Where a typical lender sells your XRP</b><span>Most lenders sell at 80% loan-to-value. With our insurance you never get there.</span></div></div>
     </div>
   </div>
 </section>
 
-<section id="how">
+<section id="watch">
   <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">How it works</div>
-      <h2>Four steps, no forced sale in a crash</h2>
-      <p>Shield is a put option, the right to sell XRP at a fixed price. We buy it for your loan every month and keep it
-        on our books. You never trade options yourself.</p>
-    </div>
-    <div class="grid g4 steps">
-      <div class="card step"><h3>Deposit XRP</h3><p>Your XRP goes into a segregated wallet in your name. It is never lent out, staked or used to fund anything else.</p></div>
-      <div class="card step"><h3>Get USDC</h3><p>Choose 20% to 50% LTV and receive USDC (or RLUSD). Interest accrues monthly; repay any time.</p></div>
-      <div class="card step"><h3>Shield is bought</h3><p>Each month we buy a put on your XRP at your Shield level, the price where your loan would hit 75% LTV. The cost is in your rate.</p></div>
-      <div class="card step"><h3>Crash? You keep XRP</h3><p>If XRP falls below the Shield level, the option pays out in USDC and that money pays down your loan. Your XRP stays yours.</p></div>
-    </div>
-    <div class="grid g3" style="margin-top:16px">
-      <div class="card">
-        <h3>Wick-proof price engine</h3>
-        <p>We never act on one exchange's print. Our price is the median of several exchanges, and any action uses the
-          60-minute average of that median. A ten-minute wick on one venue changes nothing.</p>
+    <div class="section-head"><div class="kicker">Watch it work</div><h2>Pick what XRP does, pick a plan, press play</h2>
+      <p>The chart shows the XRP price day by day and marks every moment when protection is bought, when insurance pays and when XRP is sold.</p></div>
+    <div class="card">
+      <div class="btnrow"><span class="lbl">Market</span>
+        <button class="chip" type="button" data-sc="flash" aria-pressed="true">Flash crash</button>
+        <button class="chip" type="button" data-sc="slow" aria-pressed="false">Slow fall</button>
+        <button class="chip" type="button" data-sc="rally" aria-pressed="false">Big rally</button>
       </div>
-      <div class="card">
-        <h3>Slow declines: you are asked, not sold</h3>
-        <p>If XRP drifts down and your LTV passes 55%, we ask you to add XRP or USDC to keep Shield on. Alerts at 55%,
-          60% and 65%, one-tap top-up, optional auto top-up from your My Neobank balance.</p>
+      <div class="btnrow" style="margin-top:10px"><span class="lbl">Plan</span>
+        <button class="chip plain" type="button" data-plan="typical" aria-pressed="false">Typical lender</button>
+        <button class="chip" type="button" data-plan="crash" aria-pressed="true">Crash Shield</button>
+        <button class="chip" type="button" data-plan="floor" aria-pressed="false">Hard Floor</button>
+        <button class="chip" type="button" data-plan="collar" aria-pressed="false">Zero-cost Collar</button>
       </div>
-      <div class="card">
-        <h3>Upside stays yours</h3>
-        <p>Crash Shield does not cap your gains. If XRP goes to $5, the option simply expires unused and your loan
-          becomes an even smaller share of your collateral.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="alt" id="crash">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Crash test</div>
-      <h2>Replay: the night of 10 October 2025</h2>
-      <p>Between 20:30 and 21:30 UTC XRP collapsed and rebounded within hours. One-minute prices from three exchanges
-        show how much the trigger price matters. Binance, Bybit and OKX all printed lows 55% to 57% below the day's open, while
-        loans on those exchanges start with only a 14% to 18% cushion to liquidation. Take a 40% LTV loan opened at the
-        20:30 price: measured on a single exchange's price with an 80% trigger, it would have been liquidated. Our 60-minute multi-exchange
-        average fell only <strong data-snap="replay.twap_min_drop" data-fmt="pctabs">14.6%</strong>, so the loan
-        never left the healthy zone, before Shield was even needed.</p>
-    </div>
-    <div class="card chart-card">
-      <div class="chart-head"><h3>XRP price, 10 to 11 Oct 2025 (UTC, 5-minute steps)</h3><span class="src">Binance, Coinbase, Bitstamp public 1-minute data</span></div>
-      <div class="legend">
-        <span><i style="background:var(--series-plain)"></i>Single exchange (Binance) low</span>
-        <span><i style="background:var(--series-3)"></i>Median of 3 exchanges</span>
-        <span><i style="background:var(--series-shield)"></i>60-minute average used by My Neobank</span>
-        <span><i class="dash" style="color:var(--critical)"></i>Typical liquidation level, 40% LTV loan</span>
-      </div>
-      <div class="chart-box"><canvas id="crashChart" aria-label="XRP prices during the 10 October 2025 crash" role="img"></canvas></div>
-      <details class="data"><summary>Show the numbers</summary>
-        <div class="tbl-wrap"><table id="crashTable"><thead><tr><th>Price source</th><th class="num">Price at 20:30</th><th class="num">Lowest</th><th class="num">Drop</th></tr></thead><tbody></tbody></table></div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<section id="calc">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Calculator</div>
-      <h2>Your loan, your Shield level, your cost</h2>
-      <p>Shield cost depends mostly on LTV: the lower the loan, the further below today's price the Shield level sits,
-        and the cheaper the option. Costs are estimates from today's option prices.</p>
-    </div>
-    <div class="calc">
-      <div class="card">
-        <div class="field"><label for="cQty">XRP you pledge <b id="cQtyV"></b></label><input type="number" id="cQty" value="10000" min="1000" step="1000"></div>
-        <div class="field">
-          <label>XRP price <b id="cPxV"></b></label>
-          <div class="seg" role="group" aria-label="Price">
-            <button type="button" id="pxEx" aria-pressed="true">$2.00 example</button>
-            <button type="button" id="pxLive" aria-pressed="false">Live <span data-snap="spot.deribit_index" data-fmt="usd2"></span></button>
+      <div class="sim">
+        <div>
+          <div class="chart-box"><canvas id="simChart" role="img" aria-label="XRP price over time with protection events"></canvas></div>
+          <div class="mkey">
+            <span><i class="dia" style="background:var(--muted)"></i>We buy insurance</span>
+            <span><i style="background:var(--series-shield)"></i>Insurance pays / holds</span>
+            <span><i style="background:var(--warning)"></i>Top-up request</span>
+            <span><i style="background:var(--critical)"></i>XRP sold</span>
+            <span><i style="background:var(--series-3)"></i>Collar cap reached</span>
           </div>
         </div>
-        <div class="field"><label for="cLtv">Loan-to-value <b id="cLtvV"></b></label><input type="range" id="cLtv" min="20" max="50" step="1" value="40"></div>
-        <div class="field"><label for="cBase">Illustrative base rate, before Shield <b id="cBaseV"></b></label><input type="range" id="cBase" min="6" max="16" step="0.25" value="10"></div>
-        <p class="note">Today XRP-backed stablecoin loans cost about 4% to 7% on exchange loan desks (where liquidation
-          is only 14% to 18% away) and about 8% to 17% at dedicated lenders and DeFi markets (see the Strategy page). The
-          base rate here is only a slider, not an offer.</p>
-      </div>
-      <div class="card">
-        <div class="out">
-          <div class="o"><div class="k">USDC you receive</div><div class="v" id="oLoan"></div><div class="h" id="oLoanH"></div></div>
-          <div class="o"><div class="k">Typical liquidation price (80% LTV)</div><div class="v" id="oLiq"></div><div class="h" id="oLiqH"></div></div>
-          <div class="o"><div class="k">Top-up request at (55% LTV)</div><div class="v" id="oTop"></div><div class="h" id="oTopH"></div></div>
-          <div class="o"><div class="k">Your Shield level (75% LTV)</div><div class="v" id="oShield"></div><div class="h" id="oShieldH"></div></div>
-          <div class="o"><div class="k">Crash Shield, first month</div><div class="v" id="oM1"></div><div class="h" id="oM1H"></div></div>
-          <div class="o"><div class="k">Crash Shield, per year (est.)</div><div class="v" id="oYr"></div><div class="h" id="oYrH"></div></div>
-          <div class="o"><div class="k">Illustrative all-in rate</div><div class="v" id="oAll"></div><div class="h" id="oAllH"></div></div>
-          <div class="o"><div class="k">Chance of a top-up request in a year</div><div class="v" id="oTu"></div><div class="h">Model, 65% volatility</div></div>
+        <div class="live">
+          <div class="row"><span>Day</span><b id="lvDay">0</b></div>
+          <div class="row"><span>XRP price</span><b id="lvPx">$2.00</b></div>
+          <div class="row key"><span>XRP you own</span><b id="lvQ">10,000</b></div>
+          <div class="row"><span>Your loan</span><b id="lvL">$8,000</b></div>
+          <div class="row"><span>XRP value minus loan</span><b id="lvNet">$12,000</b></div>
+          <div class="row"><span>Insurance cost so far</span><b id="lvCost">$0</b></div>
+          <div class="event" id="lvEv">Press play.</div>
+          <button class="btn primary replay" id="playBtn" type="button">&#9654; Play</button>
         </div>
-        <div class="callout" style="margin-top:16px"><p id="oUp"></p></div>
       </div>
+      <div class="tbl-wrap" style="margin-top:18px"><table id="resTable">
+        <thead><tr><th>Plan</th><th class="num">XRP you own</th><th class="num">Loan</th><th class="num">XRP minus loan</th><th class="num">Insurance cost</th><th>What happened</th></tr></thead>
+        <tbody></tbody></table></div>
+      <p class="note" style="margin-top:10px" id="scNote"></p>
     </div>
   </div>
 </section>
 
-<section class="alt" id="levels">
+<section class="alt" id="plans">
   <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Protection levels</div>
-      <h2>Pick how much certainty you want</h2>
-      <p>All levels include the wick-proof price engine and top-up alerts. Costs below are today's estimates per year,
-        as a share of the loan.</p>
-    </div>
-    <div class="grid g3">
-      <div class="card">
-        <span class="pill">Standard</span>
-        <h3 style="margin-top:10px">Wick-proof engine only</h3>
-        <p>Multi-exchange 60-minute price, alerts, top-up requests, partial action only if the 60-minute price really
-          stays below your limits. No option bought.</p>
-        <p><strong>Extra cost: none.</strong> Risk left: a real crash that lasts hours.</p>
-      </div>
-      <div class="card" style="border-color:var(--series-shield)">
-        <span class="pill ok">Recommended</span>
-        <h3 style="margin-top:10px">Crash Shield</h3>
-        <p>Monthly put at your Shield level while your LTV is 55% or lower. A sudden crash cannot force a sale; the
-          payout reduces your loan.</p>
-        <p><strong>About <span id="lvCrash25"></span> at 25% LTV, <span id="lvCrash40"></span> at 40% LTV.</strong></p>
-      </div>
-      <div class="card">
-        <span class="pill brand">Upgrade</span>
-        <h3 style="margin-top:10px">Hard Floor or Zero-cost Collar</h3>
-        <p><strong>Hard Floor:</strong> no liquidation for 12 months whatever happens. About <span id="lvFloor25"></span> at 25% LTV,
-          <span id="lvFloor40"></span> at 40%. Sensible only at low LTV.</p>
-        <p><strong>Collar:</strong> the floor is free because you give up gains above a cap in each 2-month window
-          (at 40% LTV, from $2.00 the cap is about <span id="lvCap40"></span>).</p>
-      </div>
+    <div class="section-head"><div class="kicker">Plans</div><h2>Three ways to protect the same loan</h2>
+      <p>Prices for our example: $8,000 loan on 10,000 XRP. Calculated from real option prices on <span data-snap="generated_cet"></span>.</p></div>
+    <div class="plans">
+      <div class="card plan rec"><span class="pill ok">Recommended</span><h3 style="margin-top:10px">Crash Shield</h3>
+        <div class="price" id="pcCrash">$233 <small>a year</small></div><div class="note" id="pcCrashP"></div>
+        <ul>
+          <li class="y">A sudden crash, even 50% in an hour, cannot sell your XRP</li>
+          <li class="y">If XRP stays below $1.07, the insurance pays and your loan shrinks</li>
+          <li class="y">All the upside stays yours</li>
+          <li class="n">A long slow fall: at $1.45 we ask you to top up; if you do nothing, part of your XRP can be sold at $1.00</li>
+        </ul>
+        <button class="chip" type="button" data-goto="crash" aria-pressed="false">Show me</button></div>
+      <div class="card plan"><span class="pill brand">Maximum safety</span><h3 style="margin-top:10px">Hard Floor</h3>
+        <div class="price" id="pcFloor">$1,138 <small>a year</small></div><div class="note" id="pcFloorP"></div>
+        <ul>
+          <li class="y">For 12 months nothing is ever sold, whatever XRP does</li>
+          <li class="y">Below $1.07 every loss is paid by the insurance</li>
+          <li class="y">All the upside stays yours</li>
+          <li class="n">Costly: it insures every bear market, not just crashes</li>
+        </ul>
+        <button class="chip" type="button" data-goto="floor" aria-pressed="false">Show me</button></div>
+      <div class="card plan"><span class="pill">No cost</span><h3 style="margin-top:10px">Zero-cost Collar</h3>
+        <div class="price">$0</div><div class="note" id="pcCollarP"></div>
+        <ul>
+          <li class="y">Same floor as Hard Floor: nothing sold, losses below $1.07 paid</li>
+          <li class="y">No insurance bill</li>
+          <li class="n">You pay with upside: if XRP ends a 2-month period above the cap (about <span id="capTxt">$4.97</span> from $2.00), the gain above the cap goes to pay for the insurance</li>
+        </ul>
+        <button class="chip" type="button" data-goto="collar" aria-pressed="false">Show me</button></div>
     </div>
   </div>
 </section>
 
 <section id="faq">
   <div class="wrap">
-    <div class="section-head"><div class="kicker">FAQ</div><h2>Straight answers</h2></div>
+    <div class="section-head"><div class="kicker">Straight answers</div><h2>The questions everyone asks</h2></div>
     <div class="faq">
-      <details><summary>Is any of my XRP sold to pay for Shield?</summary><p>No. Shield is paid from the loan rate in USDC. Your XRP stays in a segregated wallet and is not lent out.</p></details>
-      <details><summary>What exactly happens in a flash crash?</summary><p>Our price engine ignores single-exchange wicks. If the move is real and XRP falls below your Shield level, the option's value counts as part of your collateral, so your LTV stays at or below 75% and nothing is sold. At expiry, whatever the option pays reduces your loan.</p></details>
-      <details><summary>And if XRP falls slowly over months?</summary><p>That is the one risk an affordable monthly shield does not remove. When your LTV passes 55% we ask you to add XRP or USDC so the next month's Shield can be bought. If you do nothing and the 60-minute price later passes 80% LTV, only the amount needed to restore a safe LTV is sold, never everything.</p></details>
-      <details><summary>Why not guarantee no liquidation for the whole year?</summary><p>You can, with Hard Floor, but at today's XRP option prices it costs about <span class="f-floor40"></span> a year on a 40% LTV loan, because it insures every bear market, not only crashes. At 20 to 25% LTV it becomes reasonable.</p></details>
-      <details><summary>Does Shield limit my upside?</summary><p>Crash Shield and Hard Floor do not. Only the Zero-cost Collar does, because selling upside is what makes it free.</p></details>
-      <details><summary>Where do the options come from?</summary><p>Listed XRP options on the deepest venue today (Deribit, USDC-settled, expiries up to about two months), bought by our hedging desk for the whole loan book, plus longer-dated exchange or OTC options where available.</p></details>
-      <details><summary>Why USDC?</summary><p>It is the stablecoin most clients ask for. RLUSD on the XRP Ledger is an alternative for clients who want to stay inside the XRP ecosystem.</p></details>
+      <details open><summary>Is Crash Shield full protection?</summary>
+        <p>It is full protection against <strong>sudden</strong> crashes: minutes, hours or days. While Shield is on, the insurance counts as part of your collateral, so your loan can never reach the level where we would sell. It is <strong>not</strong> a guarantee against a slow fall over many months. Then we ask you to top up at $1.45; if you do, you stay protected. If you want no selling at all, whatever happens, that is Hard Floor.</p></details>
+      <details><summary>With Hard Floor, what exactly is guaranteed? Can I end up with more XRP?</summary>
+        <div class="answer"><p>For 12 months <strong>nothing is sold</strong>. You keep exactly your 10,000 XRP. Your value still falls as XRP goes from $2.00 to $1.07, like for any holder, but below $1.07 the insurance pays every cent of the fall, so <strong>XRP value minus loan never drops below $2,667</strong>.</p>
+          <div class="tbl-wrap"><table><thead><tr><th>XRP price</th><th class="num">Insurance pays</th><th class="num">Your loan</th><th class="num">You own</th><th class="num">XRP value minus loan</th></tr></thead><tbody>
+            <tr><td>$2.00 (start)</td><td class="num">$0</td><td class="num">$8,000</td><td class="num">10,000 XRP</td><td class="num">$12,000</td></tr>
+            <tr><td>$1.07</td><td class="num">$0</td><td class="num">$8,000</td><td class="num">10,000 XRP</td><td class="num">$2,667</td></tr>
+            <tr><td>$0.60</td><td class="num">$4,667</td><td class="num">$3,333</td><td class="num">10,000 XRP</td><td class="num">$2,667</td></tr>
+            <tr class="hl"><td>back to $2.00</td><td class="num">(already paid)</td><td class="num">$3,333</td><td class="num">10,000 XRP</td><td class="num">$16,667</td></tr>
+          </tbody></table></div>
+          <p><strong>More XRP?</strong> Only if you choose it: instead of repaying the loan, the payout can buy XRP at the low price. At $0.60 the $4,667 buys 7,778 XRP, so you would own 17,778 XRP, but you would still owe $8,000 and need new protection. More upside, more risk. By default the payout repays the loan.</p></div></details>
+      <details><summary>Why does Hard Floor cost so much more than Crash Shield?</summary>
+        <p>Crash Shield insures one month at a time and only while your loan is healthy; when XRP drifts down, you top up instead. Hard Floor insures every possible path for a full year, including long bear markets. XRP has fallen 50% or more at some point in <span data-snap="tails.p365_dd50" data-fmt="pct"></span> of all 12-month periods since 2024, and the options market prices that in. Today two months of floor cost about <span id="flr2m">0.84%</span> of the loan while XRP is at $2.00, but after every fall the next two months cost much more. Averaged over 20,000 simulated years with XRP's real volatility, that is <span id="flrYr">14.2%</span> of the loan a year.</p></details>
+      <details><summary>Where does the insurance come from?</summary>
+        <p>From the options market. We buy listed XRP put options on Deribit, the largest crypto options exchange, settled in USDC. Our hedging desk buys them for the whole loan book at once. You never trade options yourself.</p></details>
+      <details><summary>Are these numbers real?</summary>
+        <p>Yes. XRP price, option prices and crash data were pulled from Deribit, Binance, Coinbase and Bitstamp on <span data-snap="generated_cet"></span>. Insurance costs are calculated from those real option prices. The example uses XRP at $2.00 for round numbers; costs are a share of the loan, so they hold at any XRP price. The price paths in "Watch it work" are illustrations, not forecasts.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="calc">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">Calculator</div><h2>Your loan in one minute</h2>
+      <p>Enter your XRP. The loan is 40% of its value, like in the example.</p></div>
+    <div class="calc">
+      <div class="card">
+        <div class="field"><label for="cQty">XRP you pledge <b id="cQtyV"></b></label><input type="number" id="cQty" value="10000" min="1000" step="1000"></div>
+        <div class="field"><label>XRP price</label>
+          <div class="btnrow">
+            <button class="chip" type="button" id="pxEx" aria-pressed="true">$2.00 example</button>
+            <button class="chip" type="button" id="pxLive" aria-pressed="false">Today <span data-snap="spot.deribit_index" data-fmt="usd2"></span></button>
+          </div></div>
+        <div class="field"><label>Plan</label>
+          <div class="btnrow">
+            <button class="chip" type="button" data-cplan="crash" aria-pressed="true">Crash Shield</button>
+            <button class="chip" type="button" data-cplan="floor" aria-pressed="false">Hard Floor</button>
+            <button class="chip" type="button" data-cplan="collar" aria-pressed="false">Collar</button>
+          </div></div>
+      </div>
+      <div class="card">
+        <div class="out">
+          <div class="o"><div class="k">USDC you get</div><div class="v" id="oLoan"></div><div class="h" id="oLoanH"></div></div>
+          <div class="o"><div class="k">Insurance cost per year</div><div class="v" id="oCost"></div><div class="h" id="oCostH"></div></div>
+          <div class="o"><div class="k">Insurance pays below</div><div class="v" id="oShield"></div><div class="h" id="oShieldH"></div></div>
+          <div class="o"><div class="k" id="oTopK">We ask you to top up at</div><div class="v" id="oTop"></div><div class="h" id="oTopH"></div></div>
+          <div class="o"><div class="k">A typical lender would sell at</div><div class="v" id="oLiq"></div><div class="h" id="oLiqH"></div></div>
+        </div>
+        <div class="callout" style="margin-top:16px"><p id="oSum"></p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -240,131 +214,240 @@
 
 <footer>
   <div class="wrap">
-    <p><strong>Concept draft, not an offer.</strong> Market data snapshot: <span data-snap="generated_cet"></span>
-      (XRP <span data-snap="spot.deribit_index" data-fmt="usd2"></span>, Deribit index). Examples use XRP at $2.00 for
-      round numbers. Cost figures are model estimates on live option prices, not quotes. Details, sources and method:
-      <a href="strategy.html">Strategy &amp; economics</a>.</p>
+    <p><strong>Concept, not an offer.</strong> Market data: Deribit, Binance, Coinbase, Bitstamp, CoinGecko, pulled <span data-snap="generated_cet"></span>.
+      Insurance costs are calculated from real option prices on that date and change with the market.
+      Full method, market comparison and economics: <a href="strategy.html">for the team</a>.</p>
     <p>&copy; My Neobank</p>
   </div>
 </footer>
 
-<script src="data/snapshot.js?v=1"></script>
+<script src="data/snapshot.js?v=3"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="assets/app.js?v=1"></script>
+<script src="assets/app.js?v=3"></script>
 <script>
 (function () {
-  const { S, usd, px, pct, make, baseOptions, firstMonthPct, byLtv } = window.XS;
-  const M = S.models, P = M.params;
-  const at = (k, f, ltv) => byLtv(k, f, ltv);
-  const crash40 = at("crash", "mean", 40);
+  const { S: SNAP, usd, px, pct, make, baseOptions } = window.XS;
+  const M = SNAP.models, i40 = M.ltv.indexOf(40);
+  const LIQ = 0.80, PROT = 0.75, TOP = 0.55, SAFE = 0.65, FEE = 0.02;
+  const Q0 = 10000, L0 = 8000;
+  const COST = { typical: 0, crash: M.crash[i40].mean / 100, floor: M.floor[i40].mean / 100, collar: 0 };
+  const CAPMULT = M.collar[i40].cap / 2;
+  const fmt = n => Math.round(n).toLocaleString("en-US");
+  const PLAN_NAME = { typical: "Typical lender", crash: "Crash Shield", floor: "Hard Floor", collar: "Zero-cost Collar" };
+
+  /* ---------- illustrative price paths ---------- */
+  const SC = {
+    flash: { days: 90, unit: "Day", knots: [[0, 2.0], [32, 2.04], [33, 1.02], [34, 1.32], [37, 1.66], [50, 1.92], [90, 2.10]], wick: [[33, 0.90]], quiet: [[31, 36]],
+      note: "Modelled on 10 Oct 2025, when XRP fell 55% in minutes on Binance and was back within hours. Here XRP closes the crash day at $1.02 and one exchange prints $0.90." },
+    slow: { days: 365, unit: "Month", knots: [[0, 2.0], [60, 1.85], [120, 1.45], [210, 1.10], [270, 0.95], [300, 0.80], [365, 1.25]],
+      note: "A one-year bear market: XRP drifts from $2.00 to $0.80 and recovers to $1.25. Crash Shield is built for sudden crashes: here the client ignored the top-up request, so the loan behaved like an ordinary one and part of the XRP was sold near the bottom. Hard Floor and Collar sold nothing." },
+    rally: { days: 365, unit: "Month", knots: [[0, 2.0], [30, 2.6], [60, 5.4], [90, 5.0], [150, 4.4], [240, 4.0], [365, 4.8]],
+      note: "XRP jumps 170% in two months, then settles. In late 2024 XRP rose about 4x in six weeks, so moves like this happen." },
+  };
+  function mkPath(sc) {
+    const close = [], low = [];
+    for (let t = 0; t <= sc.days; t++) {
+      let j = 0; while (j < sc.knots.length - 2 && t > sc.knots[j + 1][0]) j++;
+      const [d0, p0] = sc.knots[j], [d1, p1] = sc.knots[j + 1];
+      let p = p0 + (p1 - p0) * Math.min(1, Math.max(0, (t - d0) / (d1 - d0)));
+      const quiet = (sc.quiet || []).some(([a, b]) => t >= a && t <= b);
+      if (!quiet && t > 0 && t < sc.days) p *= 1 + 0.018 * Math.sin(t * 1.9) + 0.012 * Math.sin(t * 0.53 + 1);
+      close.push(p); low.push(p);
+    }
+    (sc.wick || []).forEach(([d, l]) => { low[d] = l; });
+    return { close, low };
+  }
+
+  /* ---------- the rules, day by day ---------- */
+  function simulate(scKey, plan) {
+    const sc = SC[scKey], { close, low } = mkPath(sc), n = sc.days;
+    let Q = Q0, L = L0, cost = 0, put = null, alerted = false, sold = false, held = false;
+    const roll = plan === "crash" ? 30 : 60;
+    const o = { close, low, Q: [], L: [], net: [], cost: [], ev: [], story: [] };
+    const ev = (t, type, price, text, major = true) => { o.ev.push({ t, type, price, text, major }); if (major) o.story.push(text); };
+    (sc.wick || []).forEach(([d, l]) => ev(d, "wick", l, `One exchange printed ${px(l)} for a few minutes.`, false));
+    for (let t = 0; t <= n; t++) {
+      const S = close[t];
+      if (plan !== "typical" && t % roll === 0) {
+        if (put && t > 0) {
+          const pay = Math.min(put.q * Math.max(put.K - S, 0), L);
+          if (pay > 1) { L -= pay; ev(t, "pays", S, `Insurance expired below ${px(put.K)} and paid ${usd(pay)}. Loan is now ${usd(L)}. No XRP sold.`); }
+          if (put.cap && S > put.cap) { const s = put.q * (S - put.cap) / S; Q -= s; ev(t, "cap", S, `XRP ended the period above the ${px(put.cap)} cap: ${fmt(s)} XRP pay for the free insurance.`); }
+          put = null; held = false;
+        }
+        if (t < n && L > 0) {
+          if (plan === "crash" && L / (Q * S) > TOP) {
+            if (!alerted) { ev(t, "topup", S, `Loan is ${pct(L / (Q * S) * 100, 0)} of your XRP. We ask you to add XRP or USDC; Shield pauses until you do.`); alerted = true; }
+          } else {
+            put = { K: L / (PROT * Q), q: Q, cap: plan === "collar" ? S * CAPMULT : null };
+            ev(t, "buy", S, `We bought insurance for the next ${roll === 30 ? "month" : "2 months"}: it pays below ${px(put.K)}${put.cap ? `, capped at ${px(put.cap)}` : ""}.`, false);
+          }
+        }
+      }
+      if (plan === "crash" && !put && !alerted && L > 0 && L / (Q * S) > TOP) { alerted = true; ev(t, "topup", S, `Loan passed 55%. We ask you to top up; Shield is paused.`); }
+      if (plan === "crash" && alerted && L / (Q * S) < 0.5) alerted = false;
+      if (put && COST[plan]) cost += COST[plan] * L0 / 365;
+      if (plan === "typical") {
+        const trig = L / (LIQ * Q);
+        if (!sold && L > 0 && low[t] <= trig) {
+          const s = Math.min(Q, L * (1 + FEE) / trig); Q -= s; L = 0; sold = true;
+          ev(t, "sold", trig, `Price touched ${px(trig)}. The lender sold ${fmt(s)} XRP to repay the loan and a 2% fee. You keep ${fmt(Q)} XRP.`);
+        }
+      } else if (L > 0) {
+        const ins = put ? put.q * Math.max(put.K - S, 0) : 0;
+        if (put && S < put.K && !held) { held = true; ev(t, "hold", S, `XRP at ${px(S)}, below the ${px(put.K)} insurance level. The insurance holds your loan at 75%: nothing is sold.`); }
+        if (L / (Q * S + ins) >= LIQ) {
+          const x = Math.min(Q, Math.max(0, (L - SAFE * (Q * S + ins)) / (S * (1 - SAFE))));
+          Q -= x; L -= x * S;
+          ev(t, "partial", S, `No insurance and loan above 80%: we sold ${fmt(x)} XRP at ${px(S)}, only enough to get back to 65%.`);
+        }
+      }
+      o.Q.push(Q); o.L.push(L); o.net.push(Q * S - L); o.cost.push(cost);
+    }
+    return o;
+  }
+
+  /* ---------- chart + animation ---------- */
+  let scKey = "flash", plan = "crash", sim = null, shown = 0, timer = null;
+  const markerColor = c => ({ buy: c.muted, pays: c.shield, hold: c.shield, topup: c.warning, sold: c.critical, partial: c.critical, cap: c.s3, wick: c.plain });
+  const LABEL = { pays: "Insurance pays", hold: "Insurance holds", topup: "Top-up request", sold: "XRP sold", partial: "Part sold", cap: "Cap reached", wick: "Wick on one exchange" };
+  const markers = {
+    id: "markers",
+    afterDatasetsDraw(ch) {
+      if (!sim) return;
+      const c = window.XS.palette(), col = markerColor(c), { ctx, scales: { x, y }, chartArea: a } = ch;
+      ctx.save();
+      sim.ev.filter(e => e.t <= shown).forEach(e => {
+        const ex = x.getPixelForValue(e.t);
+        if (e.type === "buy") {
+          const yy = a.bottom - 7; ctx.fillStyle = col.buy; ctx.beginPath(); ctx.moveTo(ex, yy - 5); ctx.lineTo(ex + 5, yy); ctx.lineTo(ex, yy + 5); ctx.lineTo(ex - 5, yy); ctx.fill(); return;
+        }
+        const ey = y.getPixelForValue(e.price);
+        if (e.type === "wick") { ctx.strokeStyle = col.wick; ctx.lineWidth = 1.5; ctx.setLineDash([2, 2]); ctx.beginPath(); ctx.moveTo(ex, ey); ctx.lineTo(ex, y.getPixelForValue(sim.close[e.t])); ctx.stroke(); ctx.setLineDash([]); }
+        ctx.fillStyle = col[e.type]; ctx.strokeStyle = c.surface; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(ex, ey, e.type === "wick" ? 4 : 7, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.font = "600 11px Inter, system-ui, sans-serif"; ctx.textAlign = ex > a.right - 110 ? "right" : "left";
+        const tx = ex + (ctx.textAlign === "right" ? -11 : 11), ty = e.type === "wick" ? Math.min(a.bottom - 18, ey + 16) : Math.max(a.top + 12, ey - 11);
+        ctx.fillStyle = col[e.type]; ctx.fillText(LABEL[e.type], tx, ty);
+      });
+      ctx.restore();
+    },
+  };
+  function lines(c) {
+    const out = [];
+    if (plan === "typical") out.push({ axis: "y", value: 1.0, label: "Typical lender sells everything at $1.00", color: c.critical, align: "right" });
+    else {
+      out.push({ axis: "y", value: L0 / (PROT * Q0), label: "Insurance pays below $1.07", color: c.shield, align: "right" });
+      if (plan === "crash") out.push({ axis: "y", value: L0 / (TOP * Q0), label: "Top-up request at $1.45", color: c.warning, align: "right" });
+      if (plan === "collar") out.push({ axis: "y", value: 2 * CAPMULT, label: "First cap " + px(2 * CAPMULT), color: c.s3, align: "right" });
+    }
+    return out;
+  }
+  function build() {
+    const sc = SC[scKey], n = sc.days, ymax = Math.max(...sim.close) * 1.12;
+    make("simChart", c => ({
+      type: "line",
+      data: { datasets: [{ label: "XRP price", data: sim.close.slice(0, shown + 1).map((v, t) => ({ x: t, y: v })), borderColor: c.text, borderWidth: 2, pointRadius: 0, tension: 0.15 }] },
+      options: baseOptions({
+        mode: "nearest",
+        x: { type: "linear", min: 0, max: n, ticks: { stepSize: sc.unit === "Month" ? 30 : 15, callback: v => sc.unit === "Month" ? "M" + v / 30 : "Day " + v, color: c.muted } },
+        y: { min: 0, max: Math.ceil(ymax * 2) / 2, ticks: { callback: v => "$" + Number(v).toFixed(2), color: c.muted } },
+        lines: lines(c),
+        tooltip: { title: it => "Day " + it[0].parsed.x, label: it => " XRP $" + it.parsed.y.toFixed(2) },
+      }),
+      plugins: [markers],
+    }));
+  }
+  function paintLive() {
+    const t = shown, sc = SC[scKey];
+    document.getElementById("lvDay").textContent = sc.unit === "Month" ? `${t} (month ${Math.min(12, Math.floor(t / 30) + 1)})` : `${t}`;
+    document.getElementById("lvPx").textContent = px(sim.close[t]);
+    document.getElementById("lvQ").textContent = fmt(sim.Q[t]);
+    document.getElementById("lvL").textContent = usd(sim.L[t]);
+    document.getElementById("lvNet").textContent = usd(sim.net[t]);
+    document.getElementById("lvCost").textContent = usd(sim.cost[t]);
+    const past = sim.ev.filter(e => e.t <= t), last = past.filter(e => e.major).pop() || past.pop();
+    const box = document.getElementById("lvEv");
+    let txt = last ? last.text : "All calm. Watching the price.";
+    if (t >= sc.days) txt = `End of the replay: you own ${fmt(sim.Q[t])} XRP and owe ${usd(sim.L[t])}.` + (last && last.major ? " Last event: " + last.text : "");
+    box.textContent = txt;
+    box.className = "event" + (last && ["sold", "partial"].includes(last.type) ? " bad" : last && ["topup", "cap"].includes(last.type) ? " warn" : "");
+  }
+  function run(animate = true) {
+    clearInterval(timer);
+    sim = simulate(scKey, plan);
+    shown = animate ? 0 : SC[scKey].days;
+    build(); paintLive(); results();
+    document.getElementById("scNote").textContent = SC[scKey].note;
+    if (!animate) return;
+    const step = SC[scKey].days > 100 ? 3 : 1;
+    timer = setInterval(() => {
+      shown = Math.min(SC[scKey].days, shown + step);
+      const ch = window.XS.charts.simChart;
+      if (ch) { ch.data.datasets[0].data = sim.close.slice(0, shown + 1).map((v, t) => ({ x: t, y: v })); ch.update("none"); }
+      paintLive();
+      if (shown >= SC[scKey].days) clearInterval(timer);
+    }, 45);
+  }
+  function results() {
+    const rows = ["typical", "crash", "floor", "collar"].map(p => {
+      const r = simulate(scKey, p), e = r.Q.length - 1;
+      const what = r.story.length ? r.story[r.story.length - 1] : "Nothing to do: the price never came near the danger zone.";
+      return `<tr${p === plan ? ' class="hl"' : ""}><td><strong>${PLAN_NAME[p]}</strong></td><td class="num">${fmt(r.Q[e])}</td><td class="num">${usd(r.L[e])}</td><td class="num">${usd(r.net[e])}</td><td class="num">${usd(r.cost[e])}</td><td>${what}</td></tr>`;
+    });
+    document.querySelector("#resTable tbody").innerHTML = rows.join("");
+  }
+  function press(sel, attr, val) { document.querySelectorAll(sel).forEach(b => b.setAttribute("aria-pressed", String(b.getAttribute(attr) === val))); }
 
   document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("hero-shield-cost").textContent = pct(crash40);
-    document.getElementById("lvCrash25").textContent = pct(at("crash", "mean", 25)) + " a year";
-    document.getElementById("lvCrash40").textContent = pct(crash40) + " a year";
-    document.getElementById("lvFloor25").textContent = pct(at("floor", "mean", 25), 0);
-    document.getElementById("lvFloor40").textContent = pct(at("floor", "mean", 40), 0);
-    document.querySelectorAll(".f-floor40").forEach(e => e.textContent = pct(at("floor", "mean", 40), 0));
-    document.getElementById("lvCap40").textContent = px(at("collar", "cap", 40));
-    problem(); crash(); calc();
+    document.querySelectorAll("[data-sc]").forEach(b => b.addEventListener("click", () => { scKey = b.dataset.sc; press("[data-sc]", "data-sc", scKey); run(); }));
+    document.querySelectorAll("[data-plan]").forEach(b => b.addEventListener("click", () => { plan = b.dataset.plan; press("[data-plan]", "data-plan", plan); run(); }));
+    document.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click", () => {
+      plan = b.dataset.goto; scKey = plan === "collar" ? "rally" : plan === "floor" ? "slow" : "flash";
+      press("[data-plan]", "data-plan", plan); press("[data-sc]", "data-sc", scKey);
+      document.getElementById("watch").scrollIntoView({ behavior: "smooth" }); setTimeout(run, 400);
+    }));
+    document.getElementById("playBtn").addEventListener("click", () => run(true));
+    run(false);
+
+    const cy = COST.crash * 100, fy = COST.floor * 100, cap = 2 * CAPMULT;
+    document.getElementById("pcCrash").innerHTML = `${usd(L0 * COST.crash)} <small>a year</small>`;
+    document.getElementById("pcCrashP").textContent = `${pct(cy)} of the loan a year, built into your rate`;
+    document.getElementById("pcFloor").innerHTML = `${usd(L0 * COST.floor)} <small>a year</small>`;
+    document.getElementById("pcFloorP").textContent = `${pct(fy)} of the loan a year, built into your rate`;
+    document.getElementById("pcCollarP").textContent = "You pay nothing; you give up gains above the cap";
+    document.getElementById("capTxt").textContent = px(cap);
+    document.getElementById("flr2m").textContent = pct(M.collar[i40].put_cost_pct_loan, 2);
+    document.getElementById("flrYr").textContent = pct(fy);
+    calc();
   });
 
-  /* ---- 1. LTV vs price, example 10,000 XRP at $2, loan $8,000 ---- */
-  const Q = 10000, L = 8000, K = L / (Q * P.protect_ltv);
-  const ltvPlain = s => L / (Q * s) * 100;
-  const ltvShield = s => (s >= K ? L / (Q * s) : (L - Q * (K - s)) / (Q * s)) * 100;
-  function problem() {
-    const xs = []; for (let s = 0.4; s <= 2.4001; s += 0.02) xs.push(+s.toFixed(2));
-    let cur = 1.0;
-    make("ltvChart", c => ({
-      type: "line",
-      data: { labels: xs, datasets: [
-        { label: "Typical platform", data: xs.map(s => Math.min(ltvPlain(s), 130)), borderColor: c.plain, borderWidth: 2, pointRadius: 0, tension: 0.2 },
-        { label: "With Crash Shield", data: xs.map(s => ltvShield(s)), borderColor: c.shield, borderWidth: 2, pointRadius: 0, tension: 0.2 },
-      ] },
-      options: baseOptions({
-        x: { type: "linear", min: 0.4, max: 2.4, reverse: true, title: { display: true, text: "XRP price (falling to the right)", color: c.muted }, ticks: { callback: v => "$" + Number(v).toFixed(2), color: c.muted } },
-        y: { min: 0, max: 130, ticks: { callback: v => v + "%", color: c.muted } },
-        lines: [
-          { axis: "y", value: 80, label: "80% typical liquidation", color: c.critical },
-          { axis: "y", value: 55, label: "55% top-up request", color: c.warning, align: "left" },
-          { axis: "x", value: cur, label: "$" + cur.toFixed(2), color: c.muted, dash: [2, 3], width: 1 },
-        ],
-        tooltip: { title: it => "XRP $" + Number(it[0].parsed.x).toFixed(2), label: it => " " + it.dataset.label + ": " + it.parsed.y.toFixed(0) + "% LTV" },
-      }),
-    }));
-    const slider = document.getElementById("priceSlider");
-    const upd = () => {
-      cur = +slider.value;
-      document.getElementById("pv").textContent = "$" + cur.toFixed(2);
-      const lp = ltvPlain(cur), ls = ltvShield(cur);
-      document.getElementById("ltvPlain").textContent = lp > 80 ? "Liquidated" : lp.toFixed(0) + "%";
-      document.getElementById("ltvPlainH").textContent = "XRP value " + usd(Q * cur) + ", loan $8,000";
-      document.getElementById("ltvShield").textContent = ls.toFixed(0) + "%";
-      const pay = Math.max(K - cur, 0) * Q;
-      document.getElementById("ltvShieldH").textContent = pay > 0 ? "Shield pays " + usd(pay) + ", loan becomes " + usd(L - pay) : "Shield not needed at this price";
-      const sp = document.querySelector("#statusPlain span:last-child"), ss = document.querySelector("#statusShield span:last-child");
-      sp.textContent = lp >= 80 ? "Typical platform: liquidation. XRP is sold at the bottom, you lose the rebound." : lp > 65 ? "Typical platform: margin call, add collateral now or be liquidated." : "Typical platform: still open.";
-      ss.textContent = cur < K ? "My Neobank: you keep all 10,000 XRP. The option payout of " + usd(pay) + " reduces your loan." : ls > 55 ? "My Neobank: top-up request to keep next month's Shield on. Nothing is sold." : "My Neobank: healthy, Shield active.";
-      const ch = window.XS.charts.ltvChart;
-      if (ch) { ch.options.plugins.refLines.lines[2].value = cur; ch.options.plugins.refLines.lines[2].label = "$" + cur.toFixed(2); ch.update("none"); }
-    };
-    slider.addEventListener("input", upd); upd();
-  }
-
-  /* ---- 2. crash replay ---- */
-  function crash() {
-    const r = S.replay, ch = r.chart;
-    const liq = r.ref * (1 - (1 - 0.4 / P.liq_ltv));
-    make("crashChart", c => ({
-      type: "line",
-      data: { labels: ch.t, datasets: [
-        { label: "Binance low", data: ch.wick, borderColor: c.plain, borderWidth: 1.5, pointRadius: 0, stepped: false },
-        { label: "Median of 3 exchanges", data: ch.index, borderColor: c.s3, borderWidth: 2, pointRadius: 0 },
-        { label: "60-minute average", data: ch.twap, borderColor: c.shield, borderWidth: 2.5, pointRadius: 0 },
-      ] },
-      options: baseOptions({
-        x: { ticks: { maxTicksLimit: 8, color: c.muted } },
-        y: { ticks: { callback: v => "$" + Number(v).toFixed(2), color: c.muted } },
-        lines: [{ axis: "y", value: liq, label: "Typical liquidation $" + liq.toFixed(2), color: c.critical }],
-        tooltip: { title: it => it[0].label + " UTC", label: it => " " + it.dataset.label + ": $" + it.parsed.y.toFixed(3) },
-      }),
-    }));
-    const tb = document.querySelector("#crashTable tbody");
-    const rows = Object.keys(r.drops).map(v => [v + " (1-minute low)", r.venue_ref[v], r.venue_min[v], r.drops[v]]);
-    rows.push(["Median of 3 exchanges", r.ref, r.ref * (1 + r.index_min_drop / 100), r.index_min_drop]);
-    rows.push(["60-minute average (our trigger price)", r.ref, r.ref * (1 + r.twap_min_drop / 100), r.twap_min_drop]);
-    tb.innerHTML = rows.map(x => `<tr${x[0].startsWith("60") ? ' class="hl"' : ""}><td>${x[0]}</td><td class="num">$${x[1].toFixed(4)}</td><td class="num">$${x[2].toFixed(4)}</td><td class="num">${x[3].toFixed(1)}%</td></tr>`).join("");
-  }
-
-  /* ---- 3. calculator ---- */
+  /* ---------- calculator ---------- */
   function calc() {
-    let price = 2.0;
-    const q = document.getElementById("cQty"), l = document.getElementById("cLtv"), b = document.getElementById("cBase");
-    const ex = document.getElementById("pxEx"), lv = document.getElementById("pxLive");
-    const set = (id, v) => document.getElementById(id).textContent = v;
-    function run() {
-      const qty = Math.max(+q.value || 0, 0), ltv = +l.value, base = +b.value;
-      const loan = qty * price * ltv / 100;
-      set("cQtyV", qty.toLocaleString("en-US") + " XRP"); set("cPxV", "$" + price.toFixed(2)); set("cLtvV", ltv + "%"); set("cBaseV", base.toFixed(2) + "%");
-      set("oLoan", usd(loan)); set("oLoanH", "Collateral " + usd(qty * price));
-      const liq = loan / (qty * P.liq_ltv), top = loan / (qty * P.healthy_ltv), sh = loan / (qty * P.protect_ltv);
-      set("oLiq", px(liq)); set("oLiqH", pct((1 - liq / price) * 100, 0) + " below today");
-      set("oTop", px(top)); set("oTopH", pct((1 - top / price) * 100, 0) + " below today");
-      set("oShield", px(sh)); set("oShieldH", pct((1 - sh / price) * 100, 0) + " below today");
-      const m1 = firstMonthPct(ltv / 100);
-      set("oM1", m1 > 0 ? usd(loan * m1 / 100) : "Reserve"); set("oM1H", m1 > 0 ? pct(m1, 2) + " of the loan" : "Shield level is beyond the deepest recorded wick, so our reserve covers it");
-      const yr = byLtv("crash", "mean", ltv), p90 = byLtv("crash", "p90", ltv);
-      set("oYr", pct(yr, 2)); set("oYrH", usd(loan * yr / 100) + " a year, 1 in 10 years up to " + pct(p90, 1));
-      set("oAll", pct(base + yr, 2)); set("oAllH", pct(base, 2) + " base + " + pct(yr, 2) + " Shield");
-      set("oTu", pct(byLtv("crash", "margin_call_pct", ltv), 0));
-      const floor = byLtv("floor", "mean", ltv), cap = byLtv("collar", "cap", ltv) / 2 * price;
-      set("oUp", `Want no liquidation at all for 12 months? Hard Floor at ${ltv}% LTV costs about ${pct(floor, 1)} of the loan a year. Prefer zero cost? A collar gives the same floor if you accept a cap of about ${px(cap)} per 2-month window.`);
+    let price = 2.0, cplan = "crash";
+    const q = document.getElementById("cQty"), set = (id, v) => document.getElementById(id).textContent = v;
+    function go() {
+      const qty = Math.max(+q.value || 0, 0), loan = qty * price * 0.4;
+      set("cQtyV", fmt(qty) + " XRP");
+      set("oLoan", usd(loan)); set("oLoanH", "40% of " + usd(qty * price));
+      const yr = COST[cplan];
+      set("oCost", cplan === "collar" ? "$0" : usd(loan * yr)); set("oCostH", cplan === "collar" ? "paid with upside above " + px(price * CAPMULT) : pct(yr * 100) + " of the loan, in your rate");
+      set("oShield", px(price * 0.4 / PROT)); set("oShieldH", pct((1 - 0.4 / PROT) * 100, 0) + " below today");
+      document.getElementById("oTopK").textContent = cplan === "crash" ? "We ask you to top up at" : "Top-up needed";
+      set("oTop", cplan === "crash" ? px(price * 0.4 / TOP) : "Never"); set("oTopH", cplan === "crash" ? pct((1 - 0.4 / TOP) * 100, 0) + " below today" : "for 12 months");
+      set("oLiq", px(price * 0.4 / LIQ)); set("oLiqH", pct((1 - 0.4 / LIQ) * 100, 0) + " below today, at 80% loan-to-value");
+      const sums = {
+        crash: `A sudden crash cannot sell your XRP. If XRP stays below ${px(price * 0.4 / PROT)}, the insurance pays and your loan shrinks. In a long slow fall, top up at ${px(price * 0.4 / TOP)} to stay protected.`,
+        floor: `For 12 months nothing is sold, whatever XRP does. Below ${px(price * 0.4 / PROT)} every loss is paid by the insurance and repays your loan.`,
+        collar: `Same floor as Hard Floor at no cost. If XRP ends a 2-month period above ${px(price * CAPMULT)}, the gain above that goes to pay for the insurance.`,
+      };
+      set("oSum", sums[cplan]);
     }
-    [q, l, b].forEach(e => e.addEventListener("input", run));
-    ex.addEventListener("click", () => { price = 2.0; ex.setAttribute("aria-pressed", "true"); lv.setAttribute("aria-pressed", "false"); run(); });
-    lv.addEventListener("click", () => { price = S.spot.deribit_index; lv.setAttribute("aria-pressed", "true"); ex.setAttribute("aria-pressed", "false"); run(); });
-    run();
+    q.addEventListener("input", go);
+    document.getElementById("pxEx").addEventListener("click", () => { price = 2.0; press("#pxEx,#pxLive", "id", "pxEx"); go(); });
+    document.getElementById("pxLive").addEventListener("click", () => { price = SNAP.spot.deribit_index; press("#pxEx,#pxLive", "id", "pxLive"); go(); });
+    document.querySelectorAll("[data-cplan]").forEach(b => b.addEventListener("click", () => { cplan = b.dataset.cplan; press("[data-cplan]", "data-cplan", cplan); go(); }));
+    go();
   }
 })();
 </script>
