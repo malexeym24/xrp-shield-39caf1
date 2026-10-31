@@ -310,3 +310,8 @@ footer p { color: var(--muted); }
 details.more { margin-top: 14px; }
 details.more > summary { cursor: pointer; color: var(--brand); font-weight: 600; }
 details.more[open] > summary { margin-bottom: 12px; }
+.datebar { background: var(--surface-2); border-bottom: 1px solid var(--line); padding: 8px 0; }
+.datebar .wrap { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.datebar .dl { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 4px; }
+.datebar .chip { text-decoration: none; padding: 5px 12px; font-size: 0.85rem; }
+.datebar .dn { font-size: 0.8rem; color: var(--muted); }

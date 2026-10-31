@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=4">
+<link rel="stylesheet" href="assets/style.css?v=5">
 </head>
 <body>
 <header class="top">
@@ -34,7 +34,7 @@
     <p class="lead">You pledge XRP and get USDC. Every month we buy insurance on your XRP, so a sudden crash
       cannot force a sale. If XRP falls hard, the insurance pays and your loan gets smaller.</p>
     <div class="badge-real">&#10003; <span><b>Real numbers.</b> Market prices and option prices as of <span data-snap="generated_cet"></span>
-      (XRP today <span data-snap="spot.deribit_index" data-fmt="usd2"></span>).</span></div>
+      (XRP <span data-snap="spot.deribit_index" data-fmt="usd2"></span>).</span></div>
     <div class="btns">
       <a class="btn primary" href="#watch">&#9654; Watch it work</a>
       <a class="btn" href="#calc">Calculate my loan</a>
@@ -187,7 +187,7 @@
         <div class="field"><label>XRP price</label>
           <div class="btnrow">
             <button class="chip" type="button" id="pxEx" aria-pressed="true">$2.00 example</button>
-            <button class="chip" type="button" id="pxLive" aria-pressed="false">Today <span data-snap="spot.deribit_index" data-fmt="usd2"></span></button>
+            <button class="chip" type="button" id="pxLive" aria-pressed="false">Market price <span data-snap="spot.deribit_index" data-fmt="usd2"></span></button>
           </div></div>
         <div class="field"><label>Plan</label>
           <div class="btnrow">
@@ -220,9 +220,17 @@
   </div>
 </footer>
 
-<script src="data/snapshot.js?v=4"></script>
+<script src="data/dates.js?v=5"></script>
+<script>
+(function () {
+  var L = window.SNAP_DATES || [], d = new URLSearchParams(location.search).get("d");
+  if (L.indexOf(d) < 0) d = L[L.length - 1];
+  window.SNAP_DATE = d;
+  document.write('<script src="data/snap_' + d + '.js?v=5"><\/script>');
+})();
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="assets/app.js?v=4"></script>
+<script src="assets/app.js?v=5"></script>
 <script>
 (function () {
   const { S: SNAP, usd, px, pct, make, baseOptions } = window.XS;

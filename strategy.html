@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=3">
+<link rel="stylesheet" href="assets/style.css?v=5">
 </head>
 <body>
 <header class="top">
@@ -83,7 +83,7 @@
         <tr><td><strong>CoinRabbit</strong></td><td>11.95 to 16.8%</td><td class="num">38%</td><td>None</td></tr>
         <tr><td><strong>Nexo Credit Line</strong></td><td>9.9 to 12.9% above 20% loan</td><td class="num">64%</td><td>None, sells part</td></tr>
         <tr><td><strong>Nexo Zero-interest Credit</strong></td><td>0%</td><td class="num">n/a</td><td>No sale during the term, but below a floor price the loan is repaid with the client's XRP and above a cap the XRP is sold</td></tr>
-        <tr class="hl"><td><strong>My Neobank XRP Shield</strong></td><td>about 13% (Crash Shield)</td><td class="num">no forced sale in a crash</td><td>Insurance pays, client keeps XRP</td></tr>
+        <tr class="hl"><td><strong>My Neobank XRP Shield</strong></td><td>about <span id="m-ours"></span> (Crash Shield)</td><td class="num">no forced sale in a crash</td><td>Insurance pays, client keeps XRP</td></tr>
       </tbody></table></div>
     <p class="note" style="margin-top:10px">On 10 Oct 2025 XRP fell 55 to 57% in minutes on Binance, Bybit and OKX. Every maximum-size exchange loan would have been sold. The average of three exchanges over 60 minutes fell only <span data-snap="replay.twap_min_drop" data-fmt="pctabs"></span>; that is the price our engine uses.</p>
     <details class="more"><summary>Full lender table with sources</summary>
@@ -245,9 +245,17 @@
   </div>
 </footer>
 
-<script src="data/snapshot.js?v=3"></script>
+<script src="data/dates.js?v=5"></script>
+<script>
+(function () {
+  var L = window.SNAP_DATES || [], d = new URLSearchParams(location.search).get("d");
+  if (L.indexOf(d) < 0) d = L[L.length - 1];
+  window.SNAP_DATE = d;
+  document.write('<script src="data/snap_' + d + '.js?v=5"><\/script>');
+})();
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="assets/app.js?v=3"></script>
+<script src="assets/app.js?v=5"></script>
 <script>
 (function () {
   const { S, usd, pct, px } = window.XS;
@@ -260,7 +268,7 @@
     set("p-crash", pct(crash)); set("p-crashA", pct(10 + crash));
     set("p-floor", pct(floor)); set("p-floorA", pct(10 + floor));
     set("q-floor40", pct(floor)); set("q-all40", pct(10 + floor, 0));
-    set("m-2m", pct(M.collar[i40].put_cost_pct_loan, 2)); set("b-floor", pct(floor));
+    set("m-2m", pct(M.collar[i40].put_cost_pct_loan, 2)); set("b-floor", pct(floor)); set("m-ours", pct(10 + crash, 0));
     document.querySelector("#floorTable tbody").innerHTML = M.ltv.filter(l => l >= 20 && l <= 50 && l % 5 === 0).map((l, k) => {
       const i = M.ltv.indexOf(l), f = M.floor[i].mean;
       return `<tr${l === 25 ? ' class="hl"' : ""}><td class="num">${l}%</td><td class="num">${px(2 * l / 100 / M.params.protect_ltv)}</td><td class="num">${pct(f)}</td><td class="num">${pct(10 + f)}</td></tr>`;

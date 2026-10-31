@@ -166,3 +166,22 @@
     });
   });
 })();
+
+/* Date switch: one data snapshot per day, chosen with ?d=YYYY-MM-DD (see data/dates.js). */
+document.addEventListener("DOMContentLoaded", function () {
+  var L = window.SNAP_DATES || [], cur = window.SNAP_DATE, top = document.querySelector(".top");
+  if (!top || L.length < 2) return;
+  var nice = function (d) {
+    var p = d.split("-");
+    return new Date(Date.UTC(+p[0], +p[1] - 1, +p[2])).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+  };
+  var html = '<div class="wrap"><span class="dl">Market data date</span>';
+  L.forEach(function (d, i) {
+    html += '<a class="chip" aria-pressed="' + (d === cur) + '" href="?d=' + d + location.hash + '">' + nice(d) + (i === L.length - 1 ? " (latest)" : "") + "</a>";
+  });
+  html += '<span class="dn">Option prices change every day. Switch dates to compare.</span></div>';
+  var bar = document.createElement("div");
+  bar.className = "datebar";
+  bar.innerHTML = html;
+  top.insertAdjacentElement("afterend", bar);
+});
