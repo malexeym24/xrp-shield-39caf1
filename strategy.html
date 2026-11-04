@@ -22,7 +22,8 @@
       <a class="hide-sm" href="#buy">Buying protection</a>
       <a class="hide-sm" href="#economics">Economics</a>
       <a class="hide-sm" href="#build">Build</a>
-      <a class="cta" href="index.html">Client view</a>
+      <a class="hide-sm" href="index.html">Client view</a>
+      <a class="cta" href="jesus.html">Example for Jesús</a>
     </nav>
     <button class="theme-btn" type="button" aria-label="Switch theme"></button>
   </div>
@@ -36,6 +37,7 @@
     <h1>The plan in one page</h1>
     <p class="lead">We lend USDC against XRP and buy put options on the client's XRP, so a crash never forces a sale.
       Same example as the client page: 10,000 XRP at $2.00, loan $8,000 (40%).</p>
+    <div class="btns"><a class="btn primary" href="jesus.html">Example for Jesús: 12-month loan, monthly fees, real prices &rarr;</a></div>
     <div class="sum4" style="margin-top:26px">
       <div class="card"><h3>What we sell</h3><div class="big">"A crash does not take your XRP"</div><p>Nobody offers this today. Lenders sell on price; Nexo's 0% loan settles with the client's XRP.</p></div>
       <div class="card"><h3>What it costs us</h3><div class="big"><span id="s-crash"></span> a year</div><p>Crash Shield on the loan amount. Hard Floor: <span id="s-floor"></span>. Collar: $0, paid with upside.</p></div>
@@ -116,7 +118,7 @@
       <div class="card"><h3>XRP ETF options <span class="pill bad">No buyers</span></h3><p>Chains on XRPC and XRPZ run to June 2027, but 2027 puts have no bids and placeholder asks, open interest 0 to 35 contracts.</p></div>
       <div class="card"><h3>OTC dealers <span class="pill warn">Ask for quotes</span></h3><p>Wintermute, STS Digital, Flowdesk and FalconX trade bespoke crypto options; Galaxy offers "collar loans". None publishes XRP terms: tenor, size and price only by request, under a master agreement.</p></div>
     </div>
-    <div class="callout"><p><strong>Is one 12-month put cheaper than rolling?</strong> No. By the same option maths, one 12-month put at a 40% loan costs about 11 to 18% of the loan (volatility 70 to 85%), the same range as rolling Hard Floor (<span id="b-floor"></span>). It buys a fixed price, not a lower one. Worth asking dealers once the book is large.</p></div>
+    <div class="callout"><p id="b-12m"><strong>Is one 12-month put cheaper than rolling?</strong> No. By the same option maths, one 12-month put at a 40% loan costs about 11 to 18% of the loan (volatility 70 to 85%), the same range as rolling Hard Floor (<span id="b-floor"></span>). It buys a fixed price, not a lower one. Worth asking dealers once the book is large.</p></div>
   </div>
 </section>
 
@@ -269,6 +271,8 @@
     set("p-floor", pct(floor)); set("p-floorA", pct(10 + floor));
     set("q-floor40", pct(floor)); set("q-all40", pct(10 + floor, 0));
     set("m-2m", pct(M.collar[i40].put_cost_pct_loan, 2)); set("b-floor", pct(floor)); set("m-ours", pct(10 + crash, 0));
+    const j40 = S.jesus && S.jesus.ltv.find(r => r.ltv === 40);
+    if (j40) document.getElementById("b-12m").innerHTML = `<strong>Is one 12-month put cheaper than rolling?</strong> On today's prices, yes: one 12-month put at a 40% loan is about ${pct(j40.floor.prem)} of the loan (our estimate from the Deribit volatility curve stretched to 12 months, +25% spread), against ${pct(j40.floor.rolling.mean)} expected for rolling two-month puts (bad year ${pct(j40.floor.rolling.p90)}). Rolling re-buys closer to the price after every fall; one contract fixes the price for the year. Only a dealer quote makes it real. <a href="jesus.html">Worked example</a>.`;
     document.querySelector("#floorTable tbody").innerHTML = M.ltv.filter(l => l >= 20 && l <= 50 && l % 5 === 0).map((l, k) => {
       const i = M.ltv.indexOf(l), f = M.floor[i].mean;
       return `<tr${l === 25 ? ' class="hl"' : ""}><td class="num">${l}%</td><td class="num">${px(2 * l / 100 / M.params.protect_ltv)}</td><td class="num">${pct(f)}</td><td class="num">${pct(10 + f)}</td></tr>`;

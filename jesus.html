@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Example for Jesús | My Neobank</title>
+<meta name="description" content="A worked example: 10,000 XRP, a 12-month USDC loan, what each protection plan costs a month and a year, at real market prices.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="My Neobank home"><img src="assets/logo.svg" alt="My Neobank"></a>
+    <nav class="nav" aria-label="Sections">
+      <a class="hide-sm" href="#plans">Plans</a>
+      <a class="hide-sm" href="#end">After 12 months</a>
+      <a class="hide-sm" href="#usdc">Cost of USDC</a>
+      <a class="hide-xs" href="index.html">Client view</a>
+      <a class="cta" href="strategy.html">Strategy</a>
+    </nav>
+    <button class="theme-btn" type="button" aria-label="Switch theme"></button>
+  </div>
+</header>
+<div class="banner"><div class="wrap"><span><strong>Example for Jesús. Strategy draft, not an offer.</strong></span><span>Real market prices of <span data-snap="generated_cet"></span> &middot; XRP today <span data-snap="spot.deribit_index" data-fmt="usd2"></span></span></div></div>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">XRP Shield Loan &middot; example for Jesús</span>
+    <h1>Jesús brings 10,000 XRP.<br>What does a 12-month loan cost?</h1>
+    <p class="lead">He keeps his XRP, takes USDC for 12 months, pays only a fee every month and repays the loan at the end.
+      Pick the XRP price and the loan size; every number below follows.</p>
+    <div class="tabs" role="tablist" aria-label="XRP price">
+      <button class="tab" type="button" role="tab" data-tab="round"><b>XRP = $2.00</b><span>Round example</span></button>
+      <button class="tab" type="button" role="tab" data-tab="real"><b>XRP = <span data-snap="spot.deribit_index" data-fmt="usd2"></span></b><span>Today's real price</span></button>
+    </div>
+    <div class="btnrow ltvrow"><span class="lbl">Loan size</span>
+      <button class="chip" type="button" data-ltv="25">25%</button>
+      <button class="chip" type="button" data-ltv="30">30%</button>
+      <button class="chip" type="button" data-ltv="40">40% &middot; our example</button>
+      <button class="chip" type="button" data-ltv="50">50% &middot; maximum</button>
+    </div>
+    <div class="out facts">
+      <div class="o"><div class="k">Jesús brings</div><div class="v">10,000 XRP</div><div class="h">worth <span id="f-value"></span></div></div>
+      <div class="o"><div class="k">He receives</div><div class="v" id="f-loan"></div><div class="h">USDC, <span id="f-ltv"></span> of the XRP value</div></div>
+      <div class="o"><div class="k">At month 12 he repays</div><div class="v" id="f-repay"></div><div class="h">or extends for another year</div></div>
+      <div class="o"><div class="k">Insurance pays below</div><div class="v" id="f-strike"></div><div class="h"><span id="f-below"></span> from today's price</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="how">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">How the 12 months work</div><h2>Three moments, nothing in between</h2></div>
+    <div class="big3">
+      <div class="card"><span class="num">1</span><h3>Day 1</h3><div class="fig" id="h-1"></div>
+        <p>His 10,000 XRP go into a wallet in his name. We send the USDC and buy the insurance on his XRP.</p></div>
+      <div class="card"><span class="num">2</span><h3>Every month</h3><div class="fig">Only the fee</div>
+        <p>He pays the monthly fee of his plan. No part of the loan itself. Usual for crypto loans: the loan is repaid at the end.</p></div>
+      <div class="card"><span class="num">3</span><h3>Month 12</h3><div class="fig" id="h-3"></div>
+        <p>He repays the USDC and takes his XRP back, or extends the loan for another 12 months at the prices of that day.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="plans">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">The plans</div><h2>Four ways to protect the XRP. What he pays.</h2>
+      <p>Same loan, same 12 months. The difference is what the insurance covers and how it is paid.</p></div>
+    <div class="plans" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))">
+      <div class="card plan" id="pl-crash">
+        <span class="pill">Flexible</span>
+        <h3 style="margin-top:10px">Crash Shield</h3>
+        <p class="once">Insurance renewed every month</p>
+        <div class="price"><span data-v="m"></span> <small>/ month</small></div>
+        <p class="sub" data-v="year"></p><p class="apr" data-v="apr"></p>
+        <ul>
+          <li class="y">A sudden crash cannot sell his XRP: below <span data-v="k"></span> the insurance pays</li>
+          <li class="y">Bought monthly on Deribit at the real market price</li>
+          <li class="n">If XRP slides for months, at <span data-v="top"></span> we ask him to add XRP or USDC</li>
+        </ul>
+        <p class="fine" data-v="fine"></p>
+      </div>
+      <div class="card plan rec" id="pl-floor">
+        <span class="pill brand">Full protection</span>
+        <h3 style="margin-top:10px">Hard Floor</h3>
+        <div class="seg" role="group" aria-label="How to pay the insurance">
+          <button type="button" data-pay="monthly">Monthly, all in</button>
+          <button type="button" data-pay="now">Pay insurance now</button>
+        </div>
+        <p class="once" data-v="once"></p>
+        <div class="price"><span data-v="m"></span> <small>/ month</small></div>
+        <p class="sub" data-v="year"></p><p class="apr" data-v="apr"></p>
+        <ul>
+          <li class="y">Nothing is sold for 12 months, whatever XRP does</li>
+          <li class="y">No top-ups, no margin calls</li>
+          <li class="y">Below <span data-v="k"></span> every loss is paid and repays the loan</li>
+          <li class="y">All the gains are his</li>
+        </ul>
+        <p class="fine" data-v="fine"></p>
+      </div>
+      <div class="card plan" id="pl-collar">
+        <span class="pill">Lowest fee</span>
+        <h3 style="margin-top:10px">Collar</h3>
+        <p class="once">Interest only, no insurance fee</p>
+        <div class="price"><span data-v="m"></span> <small>/ month</small></div>
+        <p class="sub" data-v="year"></p><p class="apr" data-v="apr"></p>
+        <ul>
+          <li class="y">Same protection as Hard Floor: nothing sold, losses below <span data-v="k"></span> paid</li>
+          <li class="n">Gains above <span data-v="cap"></span> pay for the insurance (counted on the price at month 12)</li>
+        </ul>
+        <p class="fine" data-v="fine"></p>
+      </div>
+      <div class="card plan" id="pl-zero">
+        <span class="pill">Nothing monthly</span>
+        <h3 style="margin-top:10px">Zero monthly</h3>
+        <p class="once" data-v="once"></p>
+        <div class="price"><span data-v="m"></span> <small>/ month</small></div>
+        <p class="sub" data-v="year"></p><p class="apr" data-v="apr"></p>
+        <ul>
+          <li class="y">Same protection as Hard Floor: nothing sold, losses below <span data-v="k"></span> paid</li>
+          <li class="n">Gains above <span data-v="cap"></span> pay for the insurance and all the interest</li>
+        </ul>
+        <p class="fine" data-v="fine"></p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:12px">"% of the loan" = all fees of the year divided by the loan. APR = the true yearly cost when you count the timing of each payment (money paid upfront costs more than money paid later).</p>
+  </div>
+</section>
+
+<section class="alt" id="fee">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">Inside the fee</div><h2>Where each dollar of the fee goes</h2>
+      <p>Every plan carries the cost of the USDC itself. The insurance is on top, paid in cash or with gains above a cap.</p></div>
+    <div class="card">
+      <div class="feekey">
+        <span><i class="k-fund"></i>USDC we lend (market cost)</span>
+        <span><i class="k-run"></i>Custody, operations, reserve, losses</span>
+        <span><i class="k-margin"></i>Our margin</span>
+        <span><i class="k-ins"></i>Insurance</span>
+        <span><i class="k-fin"></i>Financing the insurance monthly</span>
+        <span><i class="k-up"></i>Paid with gains above the cap, not cash</span>
+      </div>
+      <div class="feebars" id="feebars"></div>
+    </div>
+    <div class="callout"><p id="fee-note"></p></div>
+  </div>
+</section>
+
+<section id="end">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">After 12 months</div><h2>What Jesús owns once the loan is repaid</h2>
+      <p>XRP value minus what he still owes, at different XRP prices on the last day. He also had the USDC to use all year; fees are not included here.</p></div>
+    <div class="tbl-wrap"><table class="scen" id="scen">
+      <thead><tr><th>XRP at month 12</th><th>Hard Floor</th><th>Collar</th><th>Zero monthly</th><th>Typical lender, no insurance</th></tr></thead>
+      <tbody></tbody></table></div>
+    <p class="note" style="margin-top:10px">Crash Shield works like Hard Floor in a sudden crash. In a slow slide he adds XRP or USDC at <span id="e-top"></span> instead, so the result depends on what he adds. The typical lender sells all the XRP at 80% loan-to-value (<span id="e-liq"></span>); penalties ignored.</p>
+  </div>
+</section>
+
+<section class="alt" id="price">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">Question</div><h2>Does the XRP price change the insurance price?</h2></div>
+    <div class="cols">
+      <div class="card">
+        <p><strong>Not the percentages.</strong> Insurance (a put option) is priced as a share of the XRP value. Three things set it:</p>
+        <ul class="clean">
+          <li><strong>Distance:</strong> how far the insurance level sits below today's price (here <span id="q-below"></span>).</li>
+          <li><strong>Time:</strong> one month or twelve.</li>
+          <li><strong>Expected movement:</strong> the volatility the market prices into options today, read from Deribit. Past moves matter only through it.</li>
+        </ul>
+        <p style="margin-top:12px">So $2.00 and today's price give the same percentages; only the dollars scale. In real life, if XRP were at $2.00 the market's expected movement could be different, so the $2.00 tab uses today's option prices as if XRP were there.</p>
+      </div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>40% loan</th><th class="num">XRP $2.00</th><th class="num">XRP today</th></tr></thead>
+        <tbody id="q-tbl"></tbody></table></div>
+    </div>
+  </div>
+</section>
+
+<section id="usdc">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">Cost of USDC</div><h2>What borrowing USDC costs today</h2>
+      <p>We lend USDC, so we either borrow it or use our own money. Our base rate starts from the middle of the market.</p></div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Where</th><th>What</th><th class="num">USDC borrow rate</th><th>Collateral</th></tr></thead>
+      <tbody id="u-tbl"></tbody></table></div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>Our base rate</h3><div class="tbl-wrap"><table><tbody id="u-base"></tbody></table></div></div>
+      <div class="card"><h3>Reading the table</h3><p id="u-note"></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="method">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">Method</div><h2>How the numbers are made</h2></div>
+    <details class="more"><summary>Show the method and the assumptions</summary>
+      <ul class="clean">
+        <li><strong>Market data</strong> pulled on <span data-snap="generated_utc"></span>: XRP option prices from Deribit (longest expiry <span data-snap="deribit.longest"></span>), XRP index <span data-snap="spot.deribit_index"></span>.</li>
+        <li><strong>Insurance level</strong> = the price where the loan would reach 75% of the XRP value. The insurance covers all 10,000 XRP.</li>
+        <li><strong>Crash Shield</strong>: real one-month Deribit put prices +25% for the spread; the yearly cost is the average of 20,000 simulated years (XRP volatility 65%), renewed only while the loan is at or below 55%.</li>
+        <li><strong>Hard Floor, Collar, Zero monthly</strong>: one 12-month contract with an option dealer. No exchange lists 12-month XRP options, so the price is our estimate: today's Deribit volatility curve stretched to 12 months (12-month at-the-money volatility <span id="m-iv"></span>), +25% when we buy, 80% of value when we sell. A dealer quote fixes the real price.</li>
+        <li><strong>Hard Floor bought on Deribit instead</strong>, every two months: expected <span id="m-roll"></span> of the loan a year, but not fixed: in a bad year up to <span id="m-roll90"></span>.</li>
+        <li><strong>Monthly, all in</strong>: we pay the insurance on day 1 and spread it over 12 monthly payments at the base rate.</li>
+        <li><strong>Zero monthly</strong>: the money from selling the gains above the cap pays the insurance and the 12 months of interest on day 1.</li>
+        <li>Fees exclude taxes. Loan currency USDC; RLUSD possible later.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Strategy draft, not an offer.</strong> Model estimates on real market prices of <span data-snap="generated_cet"></span>. Prices change every day. <a href="strategy.html">Strategy</a> &middot; <a href="index.html">Client view</a>.</p>
+    <p>&copy; My Neobank</p>
+  </div>
+</footer>
+
+<script src="data/dates.js?v=6"></script>
+<script>
+(function () {
+  /* only snapshots that carry the example */
+  var L = (window.SNAP_DATES || []).filter(function (x) { return x >= "2026-11-04"; }), d = new URLSearchParams(location.search).get("d");
+  window.SNAP_DATES = L;
+  if (L.indexOf(d) < 0) d = L[L.length - 1];
+  window.SNAP_DATE = d;
+  document.write('<script src="data/snap_' + d + '.js?v=6"><\/script>');
+})();
+</script>
+<script src="assets/app.js?v=6"></script>
+<script>
+(function () {
+  const { S, usd, pct, px } = window.XS;
+  const J = S.jesus, Q = 10000;
+  const qs = new URLSearchParams(location.search);
+  const st = { tab: qs.get("p") === "real" ? "real" : "round", ltv: [25, 30, 40, 50].includes(+qs.get("ltv")) ? +qs.get("ltv") : 40, pay: "monthly" };
+  const price = t => (t === "real" ? S.spot.deribit_index : 2.0);
+  const $ = q => document.querySelector(q), $$ = q => Array.from(document.querySelectorAll(q));
+  const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  const put = (card, key, v) => $$(`#${card} [data-v="${key}"]`).forEach(e => { e.textContent = v; });
+  const row = l => J.ltv.find(r => r.ltv === l);
+  const up = x => "+" + Math.round((x - 1) * 100) + "%";
+
+  function render() {
+    const p = price(st.tab), r = row(st.ltv), V = Q * p, L = V * r.ltv / 100, k = r.strike_x * p;
+    const m = f => usd(L * f / 100), base = J.base;
+    $$("[data-tab]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === st.tab)));
+    $$("[data-ltv]").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.ltv === st.ltv)));
+    $$("[data-pay]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.pay === st.pay)));
+    set("f-value", usd(V)); set("f-loan", usd(L)); set("f-ltv", r.ltv + "%"); set("f-repay", usd(L));
+    set("f-strike", px(k)); set("f-below", "-" + Math.round((1 - r.strike_x) * 100) + "%");
+    set("h-1", usd(L) + " USDC"); set("h-3", "Repay " + usd(L));
+    $$('[data-v="k"]').forEach(e => { e.textContent = px(k); });
+    $$('[data-v="top"]').forEach(e => { e.textContent = px(r.topup_x * p); });
+
+    const c = r.crash;
+    put("pl-crash", "m", m(c.month_pct));
+    put("pl-crash", "year", `${m(c.rate)} for 12 months = ${pct(c.rate)} of the loan`);
+    put("pl-crash", "apr", `APR ${pct(c.apr)}`);
+    put("pl-crash", "fine", `This month the insurance costs us ${m(c.this_month_ins)}. The fee uses the yearly average, ${pct(c.ins)} of the loan; it gets dearer after a fall (bad year: ${pct(c.p90)}).`);
+
+    const f = r.floor, fp = f[st.pay];
+    put("pl-floor", "once", st.pay === "now" ? `+ ${m(f.prem)} once, today (can come out of the loan)` : "Insurance included, nothing to pay today");
+    put("pl-floor", "m", m(fp.month_pct));
+    put("pl-floor", "year", `${m(fp.year_pct)} for 12 months = ${pct(fp.year_pct)} of the loan`);
+    put("pl-floor", "apr", `APR ${pct(fp.apr)}`);
+    put("pl-floor", "fine", `Insurance: ${m(f.prem)} for 12 months (${pct(f.prem)} of the loan), fixed when we buy it from an option dealer. Estimate from today's Deribit prices; if the dealer prices XRP 15 volatility points higher: ${m(f.prem_hi)}.`);
+
+    const co = r.collar;
+    put("pl-collar", "m", m(co.month_pct));
+    put("pl-collar", "year", `${m(base.rate)} for 12 months = ${pct(base.rate)} of the loan`);
+    put("pl-collar", "apr", `APR ${pct(co.apr)}`);
+    put("pl-collar", "cap", co.cap_x ? `${px(co.cap_x * p)} (${up(co.cap_x)})` : "n/a");
+    put("pl-collar", "fine", co.cap_x ? `The gains he gives up are worth about ${m(co.upside_value)} at today's option prices.` : "");
+
+    const z = r.zero, zc = $("#pl-zero");
+    zc.classList.toggle("off", !z.cap_x);
+    put("pl-zero", "once", `Repay ${usd(L)} at month 12`);
+    put("pl-zero", "m", "$0");
+    put("pl-zero", "year", "$0 for 12 months = 0% in cash");
+    put("pl-zero", "apr", "Paid with gains, not cash");
+    put("pl-zero", "cap", z.cap_x ? `${px(z.cap_x * p)} (${up(z.cap_x)})` : "n/a");
+    put("pl-zero", "fine", z.cap_x ? `The gains he gives up are worth about ${m(z.upside_value)} at today's option prices.` : "Not possible at this loan size.");
+
+    fees(r, base, m);
+    scen(r, p, L, k);
+    set("e-top", px(r.topup_x * p)); set("e-liq", px(r.liq_x * p));
+  }
+
+  function fees(r, b, m) {
+    const run = b.ops + b.reserve + b.loss;
+    const fin = r.floor.monthly.year_pct - b.rate - r.floor.prem;
+    const bars = [
+      ["Crash Shield", [["fund", b.fund], ["run", run], ["margin", b.margin], ["ins", r.crash.ins]], r.crash.rate, "cash"],
+      ["Hard Floor, monthly all in", [["fund", b.fund], ["run", run], ["margin", b.margin], ["ins", r.floor.prem], ["fin", fin]], r.floor.monthly.year_pct, "cash"],
+      ["Collar", [["fund", b.fund], ["run", run], ["margin", b.margin], ["up", r.floor.prem]], b.rate, "cash"],
+      ["Zero monthly", [["up", b.rate + r.floor.prem]], 0, "zero"],
+    ];
+    const max = Math.max(...bars.map(x => x[1].reduce((a, s) => a + s[1], 0)));
+    const names = { fund: "USDC", run: "running costs", margin: "margin", ins: "insurance", fin: "financing", up: "paid with gains" };
+    document.getElementById("feebars").innerHTML = bars.map(([n, segs, cash]) => {
+      const tip = segs.map(s => `${names[s[0]]} ${pct(s[1])}`).join(", ");
+      return `<div class="feebar"><div class="name"><span>${n}</span><b>${pct(cash)} a year in cash = ${m(cash)}</b></div>
+        <div class="track" title="${tip}" aria-label="${tip}">${segs.map(s => `<i class="k-${s[0]}" style="width:${(s[1] / max * 100).toFixed(2)}%"></i>`).join("")}</div></div>`;
+    }).join("");
+    set("fee-note", `Yes, the USDC is charged on top of the insurance: it costs about ${pct(b.fund)} a year in the market today, plus ${pct(run)} for custody, operations, reserve and losses, plus our ${pct(b.margin)} margin = a ${pct(b.rate)} base rate. If we pay the insurance on day 1 and he pays it monthly, we are also lending him the insurance money, so it carries the same rate: that is the "financing" slice (${m(fin)} a year).`);
+  }
+
+  function scen(r, p, L, k) {
+    const liq = r.liq_x * p;
+    const cell = (cap, s) => {
+      const pay = Math.max(k - s, 0) * Q;
+      const M = cap ? cap * p : Infinity;
+      const owed = Math.max(s - M, 0) * Q, xrp = Q - owed / s;
+      const debt = Math.max(L - pay, 0), cash = Math.max(pay - L, 0), net = xrp * s - debt + cash;
+      const d = cash > 0 ? `0 debt, +${usd(cash)} cash` : `owes ${usd(debt)}`;
+      return `<td><b>${usd(net)}</b><small>${Math.round(xrp).toLocaleString("en-US")} XRP, ${d}</small></td>`;
+    };
+    const lender = s => s <= liq ? `<td class="bad"><b>${usd(Q * liq - L)}</b><small>0 XRP: all sold at ${px(liq)}</small></td>`
+      : `<td><b>${usd(Q * s - L)}</b><small>10,000 XRP, owes ${usd(L)}</small></td>`;
+    document.querySelector("#scen tbody").innerHTML = [0.25, 0.5, 1, 1.5, 2.5, 4].map(x => {
+      const s = x * p;
+      const z = r.zero.cap_x ? cell(r.zero.cap_x, s) : "<td>n/a</td>";
+      return `<tr${x === 1 ? ' class="hl"' : ""}><td><strong>${px(s)}</strong><small>${x === 1 ? "unchanged" : (x < 1 ? "-" : "+") + Math.round(Math.abs(x - 1) * 100) + "%"}</small></td>${cell(null, s)}${cell(r.collar.cap_x, s)}${z}${lender(s)}</tr>`;
+    }).join("");
+  }
+
+  function question() {
+    const r = row(40), pr = price("round"), pl = price("real"), Lr = Q * pr * 0.4, Ll = Q * pl * 0.4;
+    set("q-below", "-" + Math.round((1 - r.strike_x) * 100) + "%");
+    const rows = [
+      ["Loan", usd(Lr), usd(Ll)],
+      ["Insurance level", `${px(r.strike_x * pr)} (-${Math.round((1 - r.strike_x) * 100)}%)`, `${px(r.strike_x * pl)} (-${Math.round((1 - r.strike_x) * 100)}%)`],
+      ["12-month insurance", `${usd(Lr * r.floor.prem / 100)} = ${pct(r.floor.prem)}`, `${usd(Ll * r.floor.prem / 100)} = ${pct(r.floor.prem)}`],
+      ["Crash Shield, this month", `${usd(Lr * r.crash.this_month_ins / 100)} = ${pct(r.crash.this_month_ins, 2)}`, `${usd(Ll * r.crash.this_month_ins / 100)} = ${pct(r.crash.this_month_ins, 2)}`],
+      ["Collar cap", `${px(r.collar.cap_x * pr)} (${up(r.collar.cap_x)})`, `${px(r.collar.cap_x * pl)} (${up(r.collar.cap_x)})`],
+    ];
+    document.getElementById("q-tbl").innerHTML = rows.map(x => `<tr><td>${x[0]}</td><td class="num">${x[1]}</td><td class="num">${x[2]}</td></tr>`).join("");
+  }
+
+  function usdc() {
+    const F = J.funding, b = J.base;
+    document.getElementById("u-tbl").innerHTML = F.sources.map(s =>
+      `<tr${s.in_median ? "" : ' style="opacity:.7"'}><td><strong>${s.name}</strong>${s.url ? `<small><a href="${s.url}" rel="noopener">source</a></small>` : ""}</td><td>${s.product || ""}</td><td class="num">${s.apr.toFixed(2)}%</td><td>${s.collateral || ""}</td></tr>`).join("");
+    document.getElementById("u-base").innerHTML = [["Cost of USDC (middle of the table)", b.fund], ["Custody, operations, tech", b.ops], ["Reserve for option price jumps", b.reserve], ["Expected losses", b.loss], ["Our margin", b.margin]]
+      .map(x => `<tr><td>${x[0]}</td><td class="num">${pct(x[1], 2)}</td></tr>`).join("") + `<tr class="hl"><td><strong>Base rate</strong></td><td class="num"><strong>${pct(b.rate, 2)}</strong></td></tr>`;
+    set("u-note", F.note || "");
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!J) { document.querySelector("main").innerHTML = '<section><div class="wrap"><p>This example needs market data from 4 Nov 2026 or later.</p></div></section>'; return; }
+    $$("[data-tab]").forEach(b => b.addEventListener("click", () => { st.tab = b.dataset.tab; render(); }));
+    $$("[data-ltv]").forEach(b => b.addEventListener("click", () => { st.ltv = +b.dataset.ltv; render(); }));
+    $$("[data-pay]").forEach(b => b.addEventListener("click", () => { st.pay = b.dataset.pay; render(); }));
+    const r40 = row(40).floor.rolling;
+    set("m-iv", pct(J.iv12_atm)); set("m-roll", pct(r40.mean)); set("m-roll90", pct(r40.p90));
+    question(); usdc(); render();
+  });
+})();
+</script>
+</body>
+</html>

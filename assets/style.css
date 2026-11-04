@@ -315,3 +315,38 @@ details.more[open] > summary { margin-bottom: 12px; }
 .datebar .dl { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 4px; }
 .datebar .chip { text-decoration: none; padding: 5px 12px; font-size: 0.85rem; }
 .datebar .dn { font-size: 0.8rem; color: var(--muted); }
+
+/* ---------- v3: example page (jesus.html) ---------- */
+.tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 24px; max-width: 660px; }
+.tab { border: 1px solid var(--line); background: var(--surface); color: var(--text-2); border-radius: 14px; padding: 12px 16px;
+  text-align: left; font: inherit; cursor: pointer; }
+.tab b { display: block; font-size: 1.45rem; color: var(--text); font-weight: 800; line-height: 1.2; }
+.tab > span { font-size: 0.84rem; }
+.tab:hover { border-color: var(--series-shield); }
+.tab[aria-selected="true"] { border: 2px solid var(--series-shield); padding: 11px 15px; background: color-mix(in srgb, var(--series-shield) 12%, var(--surface)); }
+.ltvrow { margin-top: 16px; }
+.facts { margin-top: 18px; }
+.plan .once { font-size: 0.92rem; color: var(--text); margin: 0 0 4px; min-height: 1.4em; }
+.plan .sub { font-size: 0.88rem; color: var(--text-2); margin: 0; }
+.plan .apr { font-size: 0.8rem; color: var(--muted); margin: 2px 0 0; }
+.plan .fine { font-size: 0.8rem; color: var(--muted); margin: auto 0 0; padding-top: 6px; }
+.plan .seg { margin: 6px 0 2px; align-self: flex-start; }
+.plan.off { opacity: 0.55; }
+.feebars { display: grid; gap: 16px; }
+.feebar .name { display: flex; justify-content: space-between; gap: 10px; font-size: 0.92rem; margin-bottom: 6px; color: var(--text); }
+.feebar .name b { font-variant-numeric: tabular-nums; }
+.feebar .track { display: flex; height: 28px; border-radius: 8px; overflow: hidden; background: var(--surface-2); border: 1px solid var(--line); }
+.feebar .track i { display: block; height: 100%; }
+.k-fund { background: var(--series-3); }
+.k-run { background: var(--neutral); }
+.k-margin { background: var(--series-plain); }
+.k-ins { background: var(--series-shield); }
+.k-fin { background: color-mix(in srgb, var(--series-shield) 45%, var(--surface)); }
+.k-up { background: repeating-linear-gradient(45deg, var(--warning) 0 5px, color-mix(in srgb, var(--warning) 25%, transparent) 5px 10px); }
+.feekey { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.82rem; color: var(--text-2); margin-bottom: 14px; }
+.feekey span { display: inline-flex; align-items: center; gap: 6px; }
+.feekey i { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+.scen td b { display: block; font-size: 1.02rem; color: var(--text); font-variant-numeric: tabular-nums; }
+.scen td small { display: block; color: var(--muted); font-size: 0.76rem; }
+.scen td.bad b { color: var(--critical); }
+.scen th:first-child, .scen td:first-child { white-space: nowrap; }
