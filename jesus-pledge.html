@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Jesús, pledged XRP | My Neobank</title>
+<meta name="description" content="The Jesús example funded with his own XRP: we pledge the 10,000 XRP at an exchange, borrow the USDC there and lend it to him. What it costs, and what it breaks.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=7">
+<style>
+  .flow-card { padding: 18px; }
+  .flow { display: block; width: 100%; max-width: 620px; height: auto; margin: 0 auto; }
+  .flow .node rect { fill: var(--surface-2); stroke: var(--line); stroke-width: 1.5; transition: stroke .3s; }
+  .flow .node.on rect { stroke: var(--brand); stroke-width: 2.5; }
+  .flow .node .nm { fill: var(--text); font-size: 14px; font-weight: 700; }
+  .flow .node .sb { fill: var(--muted); font-size: 10.5px; }
+  .flow .arr { fill: none; stroke: var(--line); stroke-width: 2; opacity: .45; marker-end: url(#m-off); transition: opacity .35s, stroke .35s, stroke-width .35s; }
+  .flow .arr.on { opacity: 1; stroke-width: 3.2; }
+  .flow .arr.on.xrp { stroke: var(--brand); marker-end: url(#m-xrp); }
+  .flow .arr.on.usd { stroke: var(--series-3); marker-end: url(#m-usd); }
+  .flow .lab { font-size: 12px; font-weight: 700; opacity: 0; transition: opacity .35s; }
+  .flow .lab.on { opacity: 1; }
+  .flow .lab.xrp { fill: var(--brand); } .flow .lab.usd { fill: var(--series-3); }
+  .flow-key { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; font-size: .85rem; color: var(--text-2); margin-top: 6px; }
+  .flow-key i { display: inline-block; width: 18px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+  .cap { margin-top: 14px; padding: 14px 16px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--line); min-height: 92px; }
+  .cap .tag { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--brand); }
+  .cap p { margin: 4px 0 0; color: var(--text); }
+  .stepper { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+  .stepper .count { color: var(--muted); font-size: .88rem; margin-left: auto; font-variant-numeric: tabular-nums; }
+  .dots { display: flex; gap: 6px; }
+  .dots button { width: 10px; height: 10px; border-radius: 50%; border: 0; padding: 0; background: var(--line); cursor: pointer; }
+  .dots button[aria-current="step"] { background: var(--brand); }
+  .ways th.pl, .ways td.pl { background: color-mix(in srgb, var(--brand) 9%, transparent); }
+  .ways th small, .ways td small { display: block; font-weight: 400; color: var(--muted); }
+  .ways td.num { white-space: nowrap; }
+  .split { display: flex; height: 14px; border-radius: 7px; overflow: hidden; margin: 10px 0 8px; }
+  .split i { display: block; height: 100%; }
+  .rung.warn .dot { background: var(--warning); }
+  .rung.ours .dot { background: var(--neutral); }
+  .rung.wick .dot { background: var(--series-plain); }
+  .rung.wick { border-style: dashed; }
+  .rung.sell { border-color: color-mix(in srgb, var(--critical) 55%, transparent); }
+  .status.good { border-color: color-mix(in srgb, var(--good) 45%, transparent); }
+  .status.bad { border-color: color-mix(in srgb, var(--critical) 55%, transparent); }
+  .venue-row { margin: 4px 0 14px; }
+  .prom td:first-child { font-weight: 600; color: var(--text); }
+  @media (prefers-reduced-motion: reduce) { .flow * { transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="My Neobank home"><img src="assets/logo.svg" alt="My Neobank"></a>
+    <nav class="nav" aria-label="Sections">
+      <a class="hide-sm" href="#flow">Money flow</a>
+      <a class="hide-sm" href="#cost">Cost</a>
+      <a class="hide-sm" href="#line">Exchange line</a>
+      <a class="hide-sm" href="#promises">Promises</a>
+      <a class="hide-xs" href="jesus.html">Main example</a>
+      <a class="cta" href="strategy.html">Strategy</a>
+    </nav>
+    <button class="theme-btn" type="button" aria-label="Switch theme"></button>
+  </div>
+</header>
+<div class="banner"><div class="wrap"><span><strong>Example for Jesús, funded with his own XRP. Strategy draft, not an offer.</strong></span><span>XRP at a round $2.00 &middot; market prices of <span data-snap="generated_cet"></span></span></div></div>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">XRP Shield Loan &middot; example for Jesús &middot; funding option 2</span>
+    <h1>The $8,000 come from<br>his own XRP.</h1>
+    <p class="lead">Same loan as the <a href="jesus.html">main example</a>: 10,000 XRP at a round $2.00, $8,000 USDC for 12 months, the same insurance.
+      One change: we pledge his XRP at an exchange and borrow the USDC there, instead of lending our own money.</p>
+    <div class="out facts">
+      <div class="o"><div class="k">Jesús brings</div><div class="v">10,000 XRP</div><div class="h">worth $20,000</div></div>
+      <div class="o"><div class="k">He receives</div><div class="v">$8,000</div><div class="h">USDC, 40% of the XRP value</div></div>
+      <div class="o"><div class="k">We borrow it at</div><div class="v" id="f-fund"></div><div class="h">a year, variable: middle of the 4 exchanges that take XRP</div></div>
+      <div class="o"><div class="k">His base rate</div><div class="v" id="f-base"></div><div class="h">main example: <span id="f-main"></span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="flow">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">How the money moves</div><h2>Seven steps, from day 1 to month 12</h2>
+      <p>Press Next, or Play to run through them.</p></div>
+    <div class="card flow-card">
+      <svg class="flow" viewBox="0 0 400 300" role="img" aria-labelledby="flow-t">
+        <title id="flow-t">Money flow: Jesús, My Neobank, the exchange and the option dealer</title>
+        <defs>
+          <marker id="m-off" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--line)"/></marker>
+          <marker id="m-xrp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--brand)"/></marker>
+          <marker id="m-usd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--series-3)"/></marker>
+        </defs>
+        <g class="node" data-n="J"><rect x="8" y="14" width="116" height="56" rx="12"/><text class="nm" x="66" y="39" text-anchor="middle">Jesús</text><text class="sb" x="66" y="56" text-anchor="middle">the client</text></g>
+        <g class="node" data-n="E"><rect x="276" y="14" width="116" height="56" rx="12"/><text class="nm" x="334" y="39" text-anchor="middle">Exchange</text><text class="sb" x="334" y="56" text-anchor="middle">lends us the USDC</text></g>
+        <g class="node" data-n="M"><rect x="142" y="128" width="116" height="56" rx="12"/><text class="nm" x="200" y="153" text-anchor="middle">My Neobank</text><text class="sb" x="200" y="170" text-anchor="middle">the lender</text></g>
+        <g class="node" data-n="D"><rect x="142" y="240" width="116" height="56" rx="12"/><text class="nm" x="200" y="265" text-anchor="middle">Option dealer</text><text class="sb" x="200" y="282" text-anchor="middle">sells the insurance</text></g>
+        <line class="arr" data-a="jm" x1="96" y1="64" x2="168" y2="120"/>
+        <line class="arr" data-a="mj" x1="160" y1="134" x2="86" y2="77"/>
+        <line class="arr" data-a="me" x1="232" y1="120" x2="304" y2="64"/>
+        <line class="arr" data-a="em" x1="314" y1="77" x2="240" y2="134"/>
+        <line class="arr" data-a="md" x1="190" y1="186" x2="190" y2="236"/>
+        <line class="arr" data-a="dm" x1="210" y1="238" x2="210" y2="188"/>
+        <text class="lab" data-l="jm" x="134" y="80"></text>
+        <text class="lab" data-l="mj" x="14" y="104"></text>
+        <text class="lab" data-l="me" x="266" y="80" text-anchor="end"></text>
+        <text class="lab" data-l="em" x="390" y="104" text-anchor="end"></text>
+        <text class="lab" data-l="md" x="182" y="216" text-anchor="end"></text>
+        <text class="lab" data-l="dm" x="218" y="216"></text>
+      </svg>
+      <div class="flow-key"><span><i style="background:var(--brand)"></i>XRP</span><span><i style="background:var(--series-3)"></i>USDC</span></div>
+      <div class="cap" aria-live="polite"><div class="tag" id="cap-tag"></div><p id="cap-text"></p></div>
+      <div class="stepper">
+        <button class="chip" type="button" id="st-back">&#9664; Back</button>
+        <button class="chip" type="button" id="st-next" aria-pressed="true">Next &#9654;</button>
+        <button class="chip" type="button" id="st-play">Play</button>
+        <div class="dots" id="st-dots" aria-label="Steps"></div>
+        <span class="count" id="st-count"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cost">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">What Jesús pays</div><h2>A little cheaper than the main example. Not the cheapest.</h2>
+      <p>Same insurance, same plans. Only the cost of the USDC changes. Monthly amounts on the $8,000 loan.</p></div>
+    <div class="tbl-wrap"><table class="ways">
+      <thead><tr><th>Where the USDC comes from</th><th class="num">Market middle<small>main example, 10 venues</small></th><th class="num pl">His XRP pledged<small>4 exchanges that take XRP</small></th><th class="num">Our own money<small>what it earns in T-bills</small></th></tr></thead>
+      <tbody id="w-tbl"></tbody></table></div>
+    <p class="note" style="margin-top:10px">Cap: XRP gains above this price pay the insurance (Collar) or the insurance and all the interest (Zero monthly).</p>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>Where his Collar fee goes each month</h3>
+        <div class="split" id="sp-bar"></div>
+        <div class="feekey" id="sp-key"></div>
+        <p class="note" id="sp-note" style="margin-top:10px"></p></div>
+      <div class="card"><h3>Reading the table</h3><p id="w-note"></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="line">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">Catch 1</div><h2>The exchange sells on its own line</h2>
+      <p>The exchange knows nothing about our insurance or our wick rules. It watches its own price and sells all the XRP when the loan reaches its limit.</p></div>
+    <div class="btnrow venue-row" id="v-row"><span class="lbl">Exchange</span></div>
+    <div class="btnrow venue-row"><span class="lbl">Exchange loan</span>
+      <button class="chip" type="button" data-what="loan">$8,000, the loan</button>
+      <button class="chip" type="button" data-what="floor">+ the Hard Floor insurance money</button>
+    </div>
+    <div class="cols">
+      <div class="ladder" id="ladder"></div>
+      <div>
+        <div class="status" id="l-status"></div>
+        <div class="card" style="margin-top:12px"><p id="l-venue"></p></div>
+        <p class="note" style="margin-top:10px" id="l-note"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="buffer">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">The fix for catch 1</div><h2>Put some of our own money in the loan</h2>
+      <p>The less we borrow at the exchange, the further its sell line moves away. Pick how deep a fall the XRP must survive at <span id="b-venue"></span>.</p></div>
+    <div class="btnrow" id="b-row"><span class="lbl">Survive</span></div>
+    <div class="out facts" id="b-out"></div>
+    <p class="note" style="margin-top:12px" id="b-note"></p>
+  </div>
+</section>
+
+<section class="alt" id="rate">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">Catch 2</div><h2>The exchange's rate moves. His fee does not.</h2>
+      <p>Jesús pays a fixed base rate for 12 months. The exchange can change its rate every hour.</p></div>
+    <div class="btnrow" id="r-row"><span class="lbl">Exchange rate</span></div>
+    <div class="out facts" id="r-out"></div>
+    <div class="status" id="r-status"></div>
+    <div class="callout"><p id="r-note"></p></div>
+  </div>
+</section>
+
+<section id="promises">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">Catch 3</div><h2>What changes in our promises to Jesús</h2></div>
+    <div class="tbl-wrap"><table class="prom">
+      <thead><tr><th>Promise</th><th>Main example</th><th>His XRP pledged</th></tr></thead>
+      <tbody>
+        <tr><td>His XRP sits in a wallet in his name</td><td><span class="pill ok">Yes</span></td><td><span class="pill bad">No</span> It sits in our account at the exchange.</td></tr>
+        <tr><td>We never lend or pledge his XRP</td><td><span class="pill ok">Yes</span></td><td><span class="pill bad">No</span> Pledging is the plan. He has to agree in writing, and a lawyer has to check it.</td></tr>
+        <tr><td>If we fail, his XRP stays his</td><td><span class="pill ok">Yes</span> Held for him, apart from ours</td><td><span class="pill warn">Weaker</span> He claims through us, and the exchange can fail too (FTX, November 2022).</td></tr>
+        <tr><td>A wick cannot sell his XRP</td><td><span class="pill ok">Yes</span> 1-hour average across several exchanges</td><td><span class="pill warn">Weaker</span> The exchange sells at its own line on its own price, unless we keep a buffer.</td></tr>
+        <tr><td>His fee stays fixed for 12 months</td><td><span class="pill ok">Yes</span></td><td><span class="pill warn">Only if we carry the rate risk</span></td></tr>
+        <tr><td>The insurance pays and repays his loan</td><td><span class="pill ok">Yes</span></td><td><span class="pill warn">Yes, if in time</span> The money has to reach the exchange before the price hits its line.</td></tr>
+      </tbody></table></div>
+    <div class="callout" style="margin-top:18px"><p id="bottom"></p></div>
+  </div>
+</section>
+
+<section class="alt" id="method">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">Method</div><h2>How the numbers are made</h2></div>
+    <details class="more"><summary>Show the method and the sources</summary>
+      <ul class="clean">
+        <li><strong>Same model as the <a href="jesus.html">main example</a></strong>, same snapshot: option prices from Deribit pulled <span data-snap="generated_utc"></span>, USDC rates read <span id="m-fund"></span>. All dollar figures use XRP at $2.00 and a 40% loan.</li>
+        <li><strong>His XRP pledged</strong>: cost of USDC = middle of the 4 venues in the USDC table that accept XRP as collateral (<span id="m-venues"></span>), plus the same <span id="m-run"></span> for custody, operations, reserve and losses and the same <span id="m-margin"></span> margin.</li>
+        <li><strong>Our own money</strong> is counted at what it would earn in 3-month US Treasury bills: <span id="m-tbill"></span>.</li>
+        <li><strong>Exchange lines</strong> from the exchanges' own pages and public loan data, checked 5 Nov 2026: Binance borrow up to 78%, margin call 85%, sale 91%; Bybit 80%, 87%, 95%; Morpho cbXRP sale at 62.5%; OKX has no fixed line (margin account, XRP counted at 97%). Which price each exchange uses to decide a sale was not checked.</li>
+        <li><strong>10 Oct 2025</strong>: lowest 1-minute price on Binance, Coinbase and Bitstamp against 20:30 UTC that evening. A fall of the same size is applied to $2.00.</li>
+        <li><strong>Buffer</strong>: the exchange loan is cut until its sale line sits at the chosen fall; the rest of the $8,000 is our own money at the T-bill rate.</li>
+        <li><strong>Rate moves</strong>: Binance flexible USDC loan rate over the 90 days to <span id="m-b90"></span>; Bybit fixed-rate loans read 5 Nov 2026. Our margin = his base rate minus the exchange rate minus <span id="m-run2"></span> running costs.</li>
+        <li>Exchange penalties on a sale, withdrawal fees and taxes are not included.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Strategy draft, not an offer.</strong> Model estimates on real market prices of <span data-snap="generated_cet"></span>. Prices change every day. <a href="jesus.html">Main example</a> &middot; <a href="strategy.html">Strategy</a> &middot; <a href="index.html">Client view</a>.</p>
+    <p>&copy; My Neobank</p>
+  </div>
+</footer>
+
+<script src="data/pledge_dates.js?v=1"></script>
+<script>
+(function () {
+  /* one pledge file per day, built from the snapshot of the same day */
+  var L = window.PLEDGE_DATES || [], d = new URLSearchParams(location.search).get("d");
+  if (L.indexOf(d) < 0) d = L[L.length - 1];
+  window.SNAP_DATES = [d]; window.SNAP_DATE = d;
+  document.write('<script src="data/snap_' + d + '.js?v=7"><\/script><script src="data/pledge_' + d + '.js?v=1"><\/script>');
+})();
+</script>
+<script src="assets/app.js?v=7"></script>
+<script>
+(function () {
+  const { usd, pct, px } = window.XS;
+  const P = window.PLEDGE, PRICE = 2.0, Q = 10000, V = Q * PRICE;
+  const $ = q => document.querySelector(q), $$ = q => Array.from(document.querySelectorAll(q));
+  const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  const html = (id, v) => { const e = document.getElementById(id); if (e) e.innerHTML = v; };
+  const fall = x => "-" + Math.round((1 - x) * 100) + "%";
+  const up = x => "+" + Math.round((x - 1) * 100) + "%";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!P) { $("main").innerHTML = '<section><div class="wrap"><p>No data for this example yet.</p></div></section>'; return; }
+    const L = V * P.ltv / 100, W = P.ways, wp = W.pledge, wm = W.main, wo = W.own;
+    const mo = f => usd(L * f / 100);              /* f = % of the loan, per month */
+    const yr = r => L * r / 100;                    /* r = % a year, in dollars */
+    const bin = P.venues.find(v => v.name === "Binance");
+    const wickX = 1 + P.wick.drops.Binance / 100;
+
+    set("f-fund", pct(wp.fund, 2)); set("f-base", pct(wp.base, 2)); set("f-main", pct(wm.base, 2));
+
+    /* ---------- money flow ---------- */
+    const colM = yr(wp.base) / 12, intM = yr(wp.fund) / 12, runM = yr(P.stack.run) / 12, marM = yr(P.stack.margin) / 12;
+    const steps = [
+      { tag: "Day 1", n: ["J", "M"], a: { jm: ["xrp", "10,000 XRP"] },
+        t: `Jesús hands us 10,000 XRP, worth ${usd(V)} at $2.00.` },
+      { tag: "Day 1", n: ["M", "E"], a: { me: ["xrp", "10,000 XRP"] },
+        t: "We pledge the same 10,000 XRP at an exchange. From now on they sit in our account there, not in a wallet in his name." },
+      { tag: "Day 1", n: ["E", "M"], a: { em: ["usd", usd(L) + " USDC"] },
+        t: `The exchange lends us ${usd(L)} USDC against them at ${pct(wp.fund, 2)} a year. The rate is variable: the exchange can change it any hour.` },
+      { tag: "Day 1", n: ["M", "J", "D"], a: { mj: ["usd", usd(L) + " USDC"], md: ["usd", "insurance"] },
+        t: `We send Jesús ${usd(L)} USDC and buy the insurance on his 10,000 XRP from an option dealer.` },
+      { tag: "Every month", n: ["J", "M", "E"], a: { jm: ["usd", usd(colM, 2) + " fee"], me: ["usd", usd(intM, 2)] },
+        t: `Jesús pays his fee (Collar: ${usd(colM, 2)}). ${usd(intM, 2)} goes to the exchange as interest, ${usd(runM, 2)} covers custody, operations, reserve and losses, ${usd(marM, 2)} is our margin.` },
+      { tag: "Month 12", n: ["J", "M", "E"], a: { jm: ["usd", usd(L)], me: ["usd", usd(L)], em: ["xrp", "10,000 XRP"], mj: ["xrp", "10,000 XRP"] },
+        t: `Jesús repays ${usd(L)}. We repay the exchange, the exchange releases the XRP, and we return his 10,000 XRP.` },
+      { tag: "If XRP crashes", n: ["D", "M", "E"], a: { dm: ["usd", "insurance pays"], me: ["usd", "in time?"] },
+        t: `Below ${px(P.strike_x * PRICE)} the insurance pays us. That money comes from the dealer, while the exchange holds the XRP and sells at its own line (Binance: ${px(bin.sell_x * PRICE)}). We must move the money to the exchange before the price gets there.` },
+    ];
+    let cur = 0, timer = null;
+    const dots = document.getElementById("st-dots");
+    dots.innerHTML = steps.map((s, i) => `<button type="button" aria-label="Step ${i + 1}"></button>`).join("");
+    const dotBtns = Array.from(dots.children);
+    dotBtns.forEach((b, i) => b.addEventListener("click", () => { stop(); show(i); }));
+    function show(i) {
+      cur = Math.max(0, Math.min(steps.length - 1, i));
+      const s = steps[cur];
+      $$(".flow .node").forEach(g => g.classList.toggle("on", s.n.includes(g.dataset.n)));
+      $$(".flow .arr").forEach(a => { const k = s.a[a.dataset.a]; a.setAttribute("class", "arr" + (k ? " on " + k[0] : "")); });
+      $$(".flow .lab").forEach(l => { const k = s.a[l.dataset.l]; l.setAttribute("class", "lab" + (k ? " on " + k[0] : "")); if (k) l.textContent = k[1]; });
+      set("cap-tag", s.tag); set("cap-text", s.t); set("st-count", `Step ${cur + 1} of ${steps.length}`);
+      dotBtns.forEach((b, j) => { if (j === cur) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current"); });
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } set("st-play", "Play"); $("#st-play").setAttribute("aria-pressed", "false"); }
+    $("#st-next").addEventListener("click", () => { stop(); show(cur + 1 >= steps.length ? 0 : cur + 1); });
+    $("#st-back").addEventListener("click", () => { stop(); show(cur - 1); });
+    $("#st-play").addEventListener("click", () => {
+      if (timer) { stop(); return; }
+      if (cur >= steps.length - 1) show(0);
+      set("st-play", "Pause"); $("#st-play").setAttribute("aria-pressed", "true");
+      timer = setInterval(() => { if (cur >= steps.length - 1) { stop(); return; } show(cur + 1); }, 3800);
+    });
+    show(0);
+
+    /* ---------- cost table ---------- */
+    const cell = (w, main, sub) => `<td class="num${w === wp ? " pl" : ""}"><strong>${main}</strong>${sub ? `<small>${sub}</small>` : ""}</td>`;
+    const rows = [
+      ["Cost of USDC", w => [pct(w.fund, 2) + " a year", ""]],
+      ["Base rate (what the Collar costs)", w => [pct(w.base, 2) + " a year", usd(yr(w.base)) + " for 12 months"]],
+      ["Crash Shield", w => [mo(w.crash.month) + " / month", "APR " + pct(w.crash.apr)]],
+      ["Hard Floor, monthly all in", w => [mo(w.floor.month) + " / month", "APR " + pct(w.floor.apr)]],
+      ["Collar", w => [usd(yr(w.base) / 12) + " / month", "cap " + px(w.collar.cap_x * PRICE) + " (" + up(w.collar.cap_x) + ")"]],
+      ["Zero monthly", w => ["$0 / month", w.zero.cap_x ? "cap " + px(w.zero.cap_x * PRICE) + " (" + up(w.zero.cap_x) + ")" : "not possible"]],
+      ["Year's interest against the main example", w => [w === wm ? "same" : usd(yr(w.base - wm.base)), ""]],
+    ];
+    html("w-tbl", rows.map(([n, f]) => `<tr${n.startsWith("Base") ? ' class="hl"' : ""}><td>${n}</td>${[wm, wp, wo].map(w => { const [a, b] = f(w); return cell(w, a, b); }).join("")}</tr>`).join(""));
+    const save = yr(wm.base - wp.base), more = yr(wp.base - wo.base);
+    set("w-note", `Pledging his XRP saves Jesús about ${usd(save)} a year against the main example (${pct(wp.base, 2)} instead of ${pct(wm.base, 2)}). Lending our own money would save him another ${usd(more)}: our money only costs us what it would earn in 3-month US Treasury bills, ${pct(P.tbill, 2)}. The insurance is the same in all three columns, so the gap is only the cost of the USDC.`);
+    const parts = [["var(--series-3)", "Exchange interest", intM], ["var(--neutral)", "Custody, operations, reserve, losses", runM], ["var(--brand)", "Our margin", marM]];
+    html("sp-bar", parts.map(p => `<i style="background:${p[0]};width:${(p[2] / colM * 100).toFixed(1)}%"></i>`).join(""));
+    html("sp-key", parts.map(p => `<span><i style="background:${p[0]}"></i>${p[1]} ${usd(p[2], 2)}</span>`).join(""));
+    set("sp-note", `Total ${usd(colM, 2)} a month. The other plans add the insurance on top of the same base.`);
+
+    /* ---------- exchange line ---------- */
+    const st = { v: "Binance", what: "loan", fall: 0.70, rate: 0 };
+    html("v-row", '<span class="lbl">Exchange</span>' + P.venues.map(v => `<button class="chip" type="button" data-v="${v.name}">${v.name.replace(", Base (cbXRP)", " cbXRP")} &middot; ${pct(v.apr, 2)}</button>`).join(""));
+    $$("[data-v]").forEach(b => b.addEventListener("click", () => { st.v = b.dataset.v; line(); buffer(); }));
+    $$("[data-what]").forEach(b => b.addEventListener("click", () => { st.what = b.dataset.what; line(); }));
+
+    function line() {
+      const v = P.venues.find(x => x.name === st.v), fl = st.what === "floor";
+      $$("[data-v]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === st.v)));
+      $$("[data-what]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.what === st.what)));
+      const loanEx = fl ? L * (1 + P.prem / 100) : L;
+      const R = [
+        { x: 1, c: "now", b: "Today, round example", s: `10,000 XRP worth ${usd(V)}, loan ${usd(L)}` },
+        { x: P.topup_x, c: "top", b: "We ask Jesús to add XRP or USDC", s: "Crash Shield: the loan has reached 55% of the XRP value" },
+        { x: P.strike_x, c: "shield", b: "The insurance starts paying", s: "Every loss below this line is paid" },
+        { x: P.liq_x, c: "ours", b: "Our own sale line", s: "Crash Shield only, on a 1-hour average across exchanges, never on a wick. Hard Floor, Collar, Zero monthly: nothing sold." },
+        { x: wickX, c: "wick", nf: true, b: `${P.wick.date} on Binance: ${Math.abs(P.wick.drops.Binance)}% down in minutes`, s: `The same fall from $2.00 ends here. Coinbase fell ${Math.abs(P.wick.drops.Coinbase)}%, Bitstamp ${Math.abs(P.wick.drops.Bitstamp)}%.` },
+      ];
+      let sellX = null;
+      if (v.sell) {
+        sellX = fl ? v.sell_x_floor : v.sell_x;
+        if (v.call) R.push({ x: v.call_x * loanEx / L, c: "warn", b: `${v.name} margin call`, s: `The loan is at ${v.call}% of the XRP value: add collateral or repay` });
+        R.push({ x: sellX, c: "sell", b: `${v.name} sells all 10,000 XRP`, s: `The loan is at ${v.sell}% of the XRP value. On the exchange's price, at once.` });
+      }
+      R.sort((a, b) => b.x - a.x);
+      html("ladder", R.map(r => `<div class="rung ${r.c}"><div class="p">${px(r.x * PRICE)}</div><div class="dot"></div><div class="t"><b>${r.b} ${r.x < 1 && !r.nf ? `<span>(${fall(r.x)})</span>` : ""}</b><span>${r.s}</span></div></div>`).join(""));
+      const S = $("#l-status");
+      if (!v.sell) { S.className = "status"; S.innerHTML = '<span class="ico">?</span><span>No fixed line to draw. Not modelled.</span>'; }
+      else if (sellX > P.strike_x) { S.className = "status bad"; S.innerHTML = `<span class="ico">&#10007;</span><span><strong>Not usable for this product.</strong> It sells at ${px(sellX * PRICE)} (${fall(sellX)}), before our insurance even starts at ${px(P.strike_x * PRICE)}.</span>`; }
+      else if (sellX >= wickX) { S.className = "status bad"; S.innerHTML = `<span class="ico">&#10007;</span><span><strong>The ${P.wick.date} wick reaches this line.</strong> ${v.name} would have sold all 10,000 XRP in minutes, if it used Binance's price that night.</span>`; }
+      else { const gap = ((wickX - sellX) * 100).toFixed(1); S.className = "status"; S.innerHTML = `<span class="ico">&#9888;</span><span><strong>${gap} points</strong> between the ${P.wick.date} wick on Binance and this sale line. A slightly deeper wick sells everything, insurance or not.</span>`; }
+      set("l-venue", `${v.name}: ${v.note} USDC rate ${pct(v.apr, 2)} a year${v.base_alone ? `; with only this exchange his base rate would be ${pct(v.base_alone, 2)}` : ""}.`);
+      set("l-note", fl ? `Hard Floor: we pay the ${usd(L * P.prem / 100)} insurance on day 1. Borrowed at the exchange too, its loan is ${usd(loanEx)} and its line moves up.` : "Collar and Crash Shield: the exchange loan is the $8,000 itself.");
+    }
+
+    /* ---------- buffer ---------- */
+    const falls = [null, 0.60, 0.65, 0.70];
+    html("b-row", '<span class="lbl">Survive</span>' + falls.map(f => `<button class="chip" type="button" data-fall="${f}">${f === null ? "No buffer" : "-" + Math.round(f * 100) + "%"}</button>`).join(""));
+    $$("[data-fall]").forEach(b => b.addEventListener("click", () => { st.fall = b.dataset.fall === "null" ? null : +b.dataset.fall; buffer(); }));
+    function buffer() {
+      const v = P.venues.find(x => x.name === st.v);
+      set("b-venue", v.name);
+      $$("[data-fall]").forEach(b => b.setAttribute("aria-pressed", String((b.dataset.fall === "null" ? null : +b.dataset.fall) === st.fall)));
+      if (!v.buffer) { html("b-out", '<div class="o"><div class="k">' + v.name + '</div><div class="v">Not modelled</div><div class="h">no fixed sale line</div></div>'); set("b-note", ""); return; }
+      const b = v.buffer.find(x => x.fall === st.fall);
+      html("b-out", [
+        ["From the exchange", usd(L * b.venue_share), pct(b.venue_share * 100, 0) + " of the loan"],
+        ["Our own money", usd(L * (1 - b.venue_share)), pct((1 - b.venue_share) * 100, 0) + " of the loan"],
+        ["Exchange sells at", px(b.line_x * PRICE), fall(b.line_x) + " from $2.00"],
+        ["His base rate", pct(b.base, 2), "cost of USDC " + pct(b.fund, 2)],
+      ].map(o => `<div class="o"><div class="k">${o[0]}</div><div class="v">${o[1]}</div><div class="h">${o[2]}</div></div>`).join(""));
+      const b70 = v.buffer.find(x => x.fall === 0.70);
+      set("b-note", `Deepest wick on Binance on ${P.wick.date}: ${P.wick.drops.Binance}%. Worst one-day fall since February 2024: ${P.wick.worst_1d}%. To survive -70% at ${v.name} we still need ${usd(L * (1 - b70.venue_share))} of our own money per $8,000 lent, about ${Math.round((1 - b70.venue_share) * 100)}%: pledging cuts the capital we need, it does not remove it. Our money is counted at the T-bill rate.`);
+    }
+
+    /* ---------- rate risk ---------- */
+    const RC = P.rate.cases;
+    html("r-row", '<span class="lbl">Exchange rate</span>' + RC.map((c, i) => `<button class="chip" type="button" data-rate="${i}">${c.label} &middot; ${pct(c.apr, 2)}</button>`).join(""));
+    $$("[data-rate]").forEach(b => b.addEventListener("click", () => { st.rate = +b.dataset.rate; rate(); }));
+    function rate() {
+      const c = RC[st.rate];
+      $$("[data-rate]").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.rate === st.rate)));
+      html("r-out", [
+        ["Exchange charges us", pct(c.apr, 2), "a year, variable"],
+        ["Jesús pays", pct(wp.base, 2), "fixed for 12 months"],
+        ["Running costs", pct(P.stack.run, 2), "custody, operations, reserve, losses"],
+        ["Our margin", pct(c.margin, 2), usd(yr(c.margin)) + " a year on $8,000"],
+      ].map(o => `<div class="o"><div class="k">${o[0]}</div><div class="v">${o[1]}</div><div class="h">${o[2]}</div></div>`).join(""));
+      const S = $("#r-status");
+      S.className = "status " + (c.margin > 0 ? "good" : "bad");
+      S.innerHTML = c.margin > 0 ? `<span class="ico">&#10003;</span><span>We still earn, but less as the rate rises. Above <strong>${pct(P.rate.breakeven, 2)}</strong> we lose money on every dollar lent.</span>`
+        : `<span class="ico">&#10007;</span><span>We lose ${usd(-yr(c.margin))} a year on this loan if the rate stayed there. Break-even is <strong>${pct(P.rate.breakeven, 2)}</strong>.</span>`;
+    }
+    const B = P.rate.binance_90d, F = P.rate.bybit_fixed;
+    set("r-note", `Binance's USDC loan rate moved between ${pct(B.low, 2)} and ${pct(B.high, 2)} in the 90 days to ${B.to} (middle ${pct(B.median, 2)}). Fixing the rate costs more: Bybit's fixed loans are ${F.map(f => pct(f.apr) + " for " + f.days + " days").join(" and ")}, which would put his base rate near ${pct(F[0].apr + P.stack.run + P.stack.margin)}. Two ways out: his fee floats with the exchange rate (exchange rate + ${pct(P.stack.run + P.stack.margin, 2)}, reset monthly), or we keep it fixed and carry the risk.`);
+
+    /* ---------- bottom line ---------- */
+    const b70 = bin.buffer.find(x => x.fall === 0.70);
+    html("bottom", `<strong>Bottom line.</strong> Pledging his XRP saves Jesús about ${usd(save)} a year on this loan and lets us lend without tying up the whole ${usd(L)}. In return it brings back an exchange sale line that ignores our wick rules, a variable cost behind a fixed fee, and it breaks two of our promises. Keeping his XRP safe from a 10 Oct 2025 wick still needs about ${usd(L * (1 - b70.venue_share))} of our own money. <strong>Our view:</strong> run the pilot on our own money; offer pledging later only as a separate plan he signs up for, with a buffer and a floating rate.`);
+
+    /* ---------- method ---------- */
+    set("m-fund", P.funding_pulled); set("m-run", pct(P.stack.run, 2)); set("m-run2", pct(P.stack.run, 2)); set("m-margin", pct(P.stack.margin, 2));
+    set("m-venues", P.venues.map(v => v.name + " " + pct(v.apr, 2)).join(", "));
+    set("m-tbill", `${pct(P.tbill, 2)} (${P.tbill_date})`); set("m-b90", B.to);
+
+    line(); buffer(); rate();
+  });
+})();
+</script>
+</body>
+</html>
