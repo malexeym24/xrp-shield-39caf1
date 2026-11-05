@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Example for Jesús | My Neobank</title>
-<meta name="description" content="A worked example: 10,000 XRP, a 12-month USDC loan, what each protection plan costs a month and a year, at real market prices.">
+<meta name="description" content="A worked example: 10,000 XRP at $2.00, a 12-month USDC loan, what each protection plan costs a month and a year, at real option and USDC prices.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=6">
+<link rel="stylesheet" href="assets/style.css?v=7">
 </head>
 <body>
 <header class="top">
@@ -26,7 +26,7 @@
     <button class="theme-btn" type="button" aria-label="Switch theme"></button>
   </div>
 </header>
-<div class="banner"><div class="wrap"><span><strong>Example for Jesús. Strategy draft, not an offer.</strong></span><span>Real market prices of <span data-snap="generated_cet"></span> &middot; XRP today <span data-snap="spot.deribit_index" data-fmt="usd2"></span></span></div></div>
+<div class="banner"><div class="wrap"><span><strong>Example for Jesús. Strategy draft, not an offer.</strong></span><span>XRP at a round $2.00 &middot; market prices of <span data-snap="generated_cet"></span></span></div></div>
 
 <main>
 <section class="hero">
@@ -34,11 +34,7 @@
     <span class="eyebrow">XRP Shield Loan &middot; example for Jesús</span>
     <h1>Jesús brings 10,000 XRP.<br>What does a 12-month loan cost?</h1>
     <p class="lead">He keeps his XRP, takes USDC for 12 months, pays only a fee every month and repays the loan at the end.
-      Pick the XRP price and the loan size; every number below follows.</p>
-    <div class="tabs" role="tablist" aria-label="XRP price">
-      <button class="tab" type="button" role="tab" data-tab="round"><b>XRP = $2.00</b><span>Round example</span></button>
-      <button class="tab" type="button" role="tab" data-tab="real"><b>XRP = <span data-snap="spot.deribit_index" data-fmt="usd2"></span></b><span>Today's real price</span></button>
-    </div>
+      XRP is priced at a round $2.00. Pick the loan size; every number below follows.</p>
     <div class="btnrow ltvrow"><span class="lbl">Loan size</span>
       <button class="chip" type="button" data-ltv="25">25%</button>
       <button class="chip" type="button" data-ltv="30">30%</button>
@@ -49,7 +45,7 @@
       <div class="o"><div class="k">Jesús brings</div><div class="v">10,000 XRP</div><div class="h">worth <span id="f-value"></span></div></div>
       <div class="o"><div class="k">He receives</div><div class="v" id="f-loan"></div><div class="h">USDC, <span id="f-ltv"></span> of the XRP value</div></div>
       <div class="o"><div class="k">At month 12 he repays</div><div class="v" id="f-repay"></div><div class="h">or extends for another year</div></div>
-      <div class="o"><div class="k">Insurance pays below</div><div class="v" id="f-strike"></div><div class="h"><span id="f-below"></span> from today's price</div></div>
+      <div class="o"><div class="k">Insurance pays below</div><div class="v" id="f-strike"></div><div class="h"><span id="f-below"></span> from $2.00</div></div>
     </div>
   </div>
 </section>
@@ -170,14 +166,14 @@
       <div class="card">
         <p><strong>Not the percentages.</strong> Insurance (a put option) is priced as a share of the XRP value. Three things set it:</p>
         <ul class="clean">
-          <li><strong>Distance:</strong> how far the insurance level sits below today's price (here <span id="q-below"></span>).</li>
+          <li><strong>Distance:</strong> how far the insurance level sits below the XRP price (here <span id="q-below"></span>).</li>
           <li><strong>Time:</strong> one month or twelve.</li>
           <li><strong>Expected movement:</strong> the volatility the market prices into options today, read from Deribit. Past moves matter only through it.</li>
         </ul>
-        <p style="margin-top:12px">So $2.00 and today's price give the same percentages; only the dollars scale. In real life, if XRP were at $2.00 the market's expected movement could be different, so the $2.00 tab uses today's option prices as if XRP were there.</p>
+        <p style="margin-top:12px">So the example uses a round $2.00: at any XRP price the percentages stay the same, only the dollar amounts move with the price. One caveat: if XRP really were at $2.00, the market's expected movement could be different. The example uses today's option prices as if XRP were there.</p>
       </div>
       <div class="tbl-wrap"><table>
-        <thead><tr><th>40% loan</th><th class="num">XRP $2.00</th><th class="num">XRP today</th></tr></thead>
+        <thead><tr><th>40% loan, at any XRP price</th><th class="num">Stays the same</th></tr></thead>
         <tbody id="q-tbl"></tbody></table></div>
     </div>
   </div>
@@ -202,10 +198,10 @@
     <div class="section-head"><div class="kicker">Method</div><h2>How the numbers are made</h2></div>
     <details class="more"><summary>Show the method and the assumptions</summary>
       <ul class="clean">
-        <li><strong>Market data</strong> pulled on <span data-snap="generated_utc"></span>: XRP option prices from Deribit (longest expiry <span data-snap="deribit.longest"></span>), XRP index <span data-snap="spot.deribit_index"></span>.</li>
+        <li><strong>Market data</strong> pulled on <span data-snap="generated_utc"></span>: XRP option prices from Deribit (longest expiry <span data-snap="deribit.longest"></span>). All dollar figures use XRP at $2.00.</li>
         <li><strong>Insurance level</strong> = the price where the loan would reach 75% of the XRP value. The insurance covers all 10,000 XRP.</li>
         <li><strong>Crash Shield</strong>: real one-month Deribit put prices +25% for the spread; the yearly cost is the average of 20,000 simulated years (XRP volatility 65%), renewed only while the loan is at or below 55%.</li>
-        <li><strong>Hard Floor, Collar, Zero monthly</strong>: one 12-month contract with an option dealer. No exchange lists 12-month XRP options, so the price is our estimate: today's Deribit volatility curve stretched to 12 months (12-month at-the-money volatility <span id="m-iv"></span>), +25% when we buy, 80% of value when we sell. A dealer quote fixes the real price.</li>
+        <li><strong>Hard Floor, Collar, Zero monthly</strong>: one 12-month contract with an option dealer. No exchange lists 12-month XRP options, so the price is our estimate: today's Deribit volatility curve stretched to 12 months (12-month at-the-money volatility <span id="m-iv"></span>), +25% when we buy, 80% of value when we sell. The gains we sell above a cap are valued at the at-the-money volatility only: short Deribit options price big rallies higher, and a dealer will not pay that for 12 months. A dealer quote fixes the real price.</li>
         <li><strong>Hard Floor bought on Deribit instead</strong>, every two months: expected <span id="m-roll"></span> of the loan a year, but not fixed: in a bad year up to <span id="m-roll90"></span>.</li>
         <li><strong>Monthly, all in</strong>: we pay the insurance on day 1 and spread it over 12 monthly payments at the base rate.</li>
         <li><strong>Zero monthly</strong>: the money from selling the gains above the cap pays the insurance and the 12 months of interest on day 1.</li>
@@ -223,25 +219,25 @@
   </div>
 </footer>
 
-<script src="data/dates.js?v=6"></script>
+<script src="data/dates.js?v=7"></script>
 <script>
 (function () {
   /* only snapshots that carry the example */
-  var L = (window.SNAP_DATES || []).filter(function (x) { return x >= "2026-11-04"; }), d = new URLSearchParams(location.search).get("d");
+  var L = (window.SNAP_DATES || []).filter(function (x) { return x >= "2026-11-05"; }), d = new URLSearchParams(location.search).get("d");
   window.SNAP_DATES = L;
   if (L.indexOf(d) < 0) d = L[L.length - 1];
   window.SNAP_DATE = d;
-  document.write('<script src="data/snap_' + d + '.js?v=6"><\/script>');
+  document.write('<script src="data/snap_' + d + '.js?v=7"><\/script>');
 })();
 </script>
-<script src="assets/app.js?v=6"></script>
+<script src="assets/app.js?v=7"></script>
 <script>
 (function () {
   const { S, usd, pct, px } = window.XS;
   const J = S.jesus, Q = 10000;
   const qs = new URLSearchParams(location.search);
-  const st = { tab: qs.get("p") === "real" ? "real" : "round", ltv: [25, 30, 40, 50].includes(+qs.get("ltv")) ? +qs.get("ltv") : 40, pay: "monthly" };
-  const price = t => (t === "real" ? S.spot.deribit_index : 2.0);
+  const st = { ltv: [25, 30, 40, 50].includes(+qs.get("ltv")) ? +qs.get("ltv") : 40, pay: "monthly" };
+  const PRICE = 2.0; /* round example price; percentages do not depend on it */
   const $ = q => document.querySelector(q), $$ = q => Array.from(document.querySelectorAll(q));
   const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
   const put = (card, key, v) => $$(`#${card} [data-v="${key}"]`).forEach(e => { e.textContent = v; });
@@ -249,9 +245,8 @@
   const up = x => "+" + Math.round((x - 1) * 100) + "%";
 
   function render() {
-    const p = price(st.tab), r = row(st.ltv), V = Q * p, L = V * r.ltv / 100, k = r.strike_x * p;
+    const p = PRICE, r = row(st.ltv), V = Q * p, L = V * r.ltv / 100, k = r.strike_x * p;
     const m = f => usd(L * f / 100), base = J.base;
-    $$("[data-tab]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === st.tab)));
     $$("[data-ltv]").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.ltv === st.ltv)));
     $$("[data-pay]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.pay === st.pay)));
     set("f-value", usd(V)); set("f-loan", usd(L)); set("f-ltv", r.ltv + "%"); set("f-repay", usd(L));
@@ -278,7 +273,7 @@
     put("pl-collar", "year", `${m(base.rate)} for 12 months = ${pct(base.rate)} of the loan`);
     put("pl-collar", "apr", `APR ${pct(co.apr)}`);
     put("pl-collar", "cap", co.cap_x ? `${px(co.cap_x * p)} (${up(co.cap_x)})` : "n/a");
-    put("pl-collar", "fine", co.cap_x ? `The gains he gives up are worth about ${m(co.upside_value)} at today's option prices.` : "");
+    put("pl-collar", "fine", co.cap_x ? `The gains he gives up are worth about ${m(co.upside_value)} at today's option prices.${co.cap_hi_x ? ` If the dealer prices the insurance 15 volatility points higher, the cap falls to ${px(co.cap_hi_x * p)} (${up(co.cap_hi_x)}).` : ""}` : "");
 
     const z = r.zero, zc = $("#pl-zero");
     zc.classList.toggle("off", !z.cap_x);
@@ -287,7 +282,7 @@
     put("pl-zero", "year", "$0 for 12 months = 0% in cash");
     put("pl-zero", "apr", "Paid with gains, not cash");
     put("pl-zero", "cap", z.cap_x ? `${px(z.cap_x * p)} (${up(z.cap_x)})` : "n/a");
-    put("pl-zero", "fine", z.cap_x ? `The gains he gives up are worth about ${m(z.upside_value)} at today's option prices.` : "Not possible at this loan size.");
+    put("pl-zero", "fine", z.cap_x ? `The gains he gives up are worth about ${m(z.upside_value)} at today's option prices.${z.cap_hi_x ? ` If the dealer prices the insurance 15 volatility points higher, the cap falls to ${px(z.cap_hi_x * p)} (${up(z.cap_hi_x)}).` : ""}` : "Not possible at this loan size.");
 
     fees(r, base, m);
     scen(r, p, L, k);
@@ -333,16 +328,16 @@
   }
 
   function question() {
-    const r = row(40), pr = price("round"), pl = price("real"), Lr = Q * pr * 0.4, Ll = Q * pl * 0.4;
+    const r = row(40);
     set("q-below", "-" + Math.round((1 - r.strike_x) * 100) + "%");
     const rows = [
-      ["Loan", usd(Lr), usd(Ll)],
-      ["Insurance level", `${px(r.strike_x * pr)} (-${Math.round((1 - r.strike_x) * 100)}%)`, `${px(r.strike_x * pl)} (-${Math.round((1 - r.strike_x) * 100)}%)`],
-      ["12-month insurance", `${usd(Lr * r.floor.prem / 100)} = ${pct(r.floor.prem)}`, `${usd(Ll * r.floor.prem / 100)} = ${pct(r.floor.prem)}`],
-      ["Crash Shield, this month", `${usd(Lr * r.crash.this_month_ins / 100)} = ${pct(r.crash.this_month_ins, 2)}`, `${usd(Ll * r.crash.this_month_ins / 100)} = ${pct(r.crash.this_month_ins, 2)}`],
-      ["Collar cap", `${px(r.collar.cap_x * pr)} (${up(r.collar.cap_x)})`, `${px(r.collar.cap_x * pl)} (${up(r.collar.cap_x)})`],
+      ["Insurance level", `${Math.round((1 - r.strike_x) * 100)}% below the price`],
+      ["12-month insurance", `${pct(r.floor.prem)} of the loan`],
+      ["Crash Shield, this month", `${pct(r.crash.this_month_ins, 2)} of the loan`],
+      ["Collar cap", `${up(r.collar.cap_x)} above the price`],
+      ["Base rate", `${pct(J.base.rate)} a year`],
     ];
-    document.getElementById("q-tbl").innerHTML = rows.map(x => `<tr><td>${x[0]}</td><td class="num">${x[1]}</td><td class="num">${x[2]}</td></tr>`).join("");
+    document.getElementById("q-tbl").innerHTML = rows.map(x => `<tr><td>${x[0]}</td><td class="num">${x[1]}</td></tr>`).join("");
   }
 
   function usdc() {
@@ -355,8 +350,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    if (!J) { document.querySelector("main").innerHTML = '<section><div class="wrap"><p>This example needs market data from 4 Nov 2026 or later.</p></div></section>'; return; }
-    $$("[data-tab]").forEach(b => b.addEventListener("click", () => { st.tab = b.dataset.tab; render(); }));
+    if (!J) { document.querySelector("main").innerHTML = '<section><div class="wrap"><p>This example needs market data from 5 Nov 2026 or later.</p></div></section>'; return; }
     $$("[data-ltv]").forEach(b => b.addEventListener("click", () => { st.ltv = +b.dataset.ltv; render(); }));
     $$("[data-pay]").forEach(b => b.addEventListener("click", () => { st.pay = b.dataset.pay; render(); }));
     const r40 = row(40).floor.rolling;
